@@ -4,44 +4,44 @@ title: Rails Girls App Tutorial
 permalink: app
 ---
 
-# Rails Girls App Tutorial
+# מדריך Rails Girls לבניית אפליקציה
 
-*Created by Vesa Vänskä, [@vesan](https://twitter.com/vesan)*
+*נוצר על-ידי Vesa Vänskä, [@vesan](https://twitter.com/vesan)*
 
-**Make sure you have Rails installed.** [**Follow the installation guide**](/install) to get set up.
+**ודאי ש-Rails מותקן אצלך.** [**קראי את מדריך ההתקנה**](/install) כדי להכין את המחשב שלך.
 
 
-## Get to know the tools
+## הכירי את כלי העבודה
 
 <div class="indent" markdown="1">
 
 <h3><i class="icon-text-editor">&nbsp;</i></h3>
-### Text Editor
+### עורך טקסט
 
-[Sublime Text](http://www.sublimetext.com), [Komodo Edit](http://www.activestate.com/komodo-edit), Vim, Emacs, and Gedit are examples of text editors your can use for writing code and editing files.
+[Sublime Text](http://www.sublimetext.com), [Komodo Edit](http://www.activestate.com/komodo-edit), Vim, Emacs, ו-Gedit הם דוגמאות לעורי טקסט שאת יכולה להשתמש בהם לכתיבת קוד ועריכת קבצים.
 
 <h3><i class="icon-prompt">&nbsp;</i></h3>
-### Terminal (known as Command Prompt on Windows)
-Where you start the rails server and run commands.
+### Terminal (נקרא גם Prompt ב-Windows)
+כן את מפעילה את שרת ה-Rails ומריצה פקודות.
 
 <h3><i class="icon-browser">&nbsp;</i></h3>
-### Web browser
-(Firefox, Safari, Chrome) for viewing your application.
+### דפדפן
+(Firefox, Safari, Chrome) לצפייה באפליקציה שלך.
 
 </div>
 
 
-## *1.*Creating the application
+## *1.*יצירת האפליקציה
 
-We're going to create a new Rails app called *railsgirls*.
+אנחנו הולכים ליצור אפליקציית Rails חדשה בשם *railsgirls*.
 
-First, let's open a terminal:
+ראשית, נפתח את הטרמינל:
 
-* Mac OS X: Open Spotlight, type *Terminal* and click the *Terminal* application.
-* Windows: Click Start and look for *Command Prompt*, then click *Command Prompt with Ruby on Rails*.
-* Linux (Ubuntu): Search for *Terminal* on the dash and click *Terminal*.
+* Mac OS X: פתחי את Spotlight, כיתבי *Terminal* ולחצי על אפליקצית ה-*Terminal*.
+* Windows: לחצי Start וחפשי את *Command Prompt*, אחר כך, אחר כך לחצי על *Command Prompt with Ruby on Rails*.
+* Linux (Ubuntu): חפי את *Terminal* on the dash and click *Terminal*.
 
-Next, type these commands in the terminal:
+לאחר מכן הקלידי את הפקודות הבאות בטרמינל:
 
 <div class="os-specific">
   <div class="nix">
@@ -65,18 +65,18 @@ ruby script\rails server
   </div>
 </div>
 
-Open [http://localhost:3000](http://localhost:3000) in your browser. You should see "Welcome aboard" page, which means that the generation of your new app worked correctly.
+פתחי את הדפדפן שלך וגילשי לכתובת [http://localhost:3000](http://localhost:3000). את אמורה לראות עמוד "Welcome aboard", שאומר שיצירת האפליקציה פעלה כראוי.
 
-Hit `CTRL-C` in the terminal to quit the server.
+לחצי `CTRL-C` בטרמינל כדי לכבות את השרת.
 
-**Coach:** Explain what each command does. What was generated? What does the server do?
+**דריכה:** הסבירי מה כל פקודה עושה. מה ג'ונרט? מה עושה השרת?
 
 
-## *2.*Create Idea scaffold
+## *2.*יצירת שלד רעיון
 
-We're going to use Rails' scaffold functionality to generate a starting point that allows us to list, add, remove, edit, and view things; in our case ideas.
+אנחנו הולכים להשתמש בפונקציונליות ה-scaffold (שלד) של Rails כדי ליצור אפליקציה התחלתית שמאפשרת לשנו להציג רשימה, להוסיף, למחוק, לערוך ולצפות בדברים; במקרה שלנו: רעיונות.
 
-**Coach:** What is Rails scaffolding? (Explain the command, the model name and related database table, naming conventions, attributes and types, etc.) What are migrations and why do you need them?
+**מדריך/ה:** מה זה scaffolding ב-Rails? (הסבר/הסבירי את הפקודה, את שם ה-model ואת הטבלה המשוייכת לו, naming conventions, מאפיינים וטיפוסים, וכו'.) מהן מיגרציות ובשביל מה צריך אותן?
 
 <div class="os-specific">
   <div class="nix">
@@ -96,36 +96,36 @@ ruby script\rails server
   </div>
 </div>
 
-Open [http://localhost:3000/ideas](http://localhost:3000/ideas) in your browser. Click around and test what you got by running these few command-line commands.
+גלשי לכתובת [http://localhost:3000/ideas](http://localhost:3000/ideas) בדפדפן שלך. לחצי מסביב ובדקי את מה שקיבלת באמצעות הרצת מעט הפקודות האלו.
 
-Hit `CTRL-C` to quit the server again when you've clicked around a little.
+לחצי `CTRL-C` כדי לכבות את השרת שוב אחרי ששיחקת קצת עם האפליקציה.
 
 
-## *3.*Design
+## *3.*עיצוב
 
-**Coach:** Talk about the relationship between HTML and Rails. What part of views is HTML and what is Embedded Ruby (ERB)? What is MVC and how does this relate to it? (Models and controllers are responsible for generating the HTML views.)
+**מדריך/ה:** דברי על הקשר בין HTML ו-Rails. אלו חלקים מה-views הם HTML ואלו הם Embedded Ruby (ERB)? מה זה MVC ואיך זה מתקשר לעניננו? (Models ו-controllers אחראיים לייצור תצוגות ה-HTML.)
 
-The app doesn't look very nice yet. Let's do something about that. We'll use the Twitter Bootstrap project to give us nicer styling really easily.
+האפליקציה עדיין לא נראית משהו. בואי נעשה עם זה משהו. נוסיף את הפרוייקט Twitter Bootstrap כדי לתת לנו סטייל נחמד יותר בקלות רבה.
 
-Open `app/views/layouts/application.html.erb` in your text editor and above the line
+פתחי את הקובץ `app/views/layouts/application.html.erb` בערוך הטקסט שלך, ומעל השורה
 
 {% highlight erb %}
 <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 {% endhighlight %}
 
-add
+הוסיפי
 
 {% highlight erb %}
 <link rel="stylesheet" href="http://railsgirls.com/assets/bootstrap.css">
 {% endhighlight %}
 
-and replace
+והחליפי את 
 
 {% highlight erb %}
 <%= yield %>
 {% endhighlight %}
 
-with
+ב-
 
 {% highlight erb %}
 <div class="container">
@@ -133,7 +133,7 @@ with
 </div>
 {% endhighlight %}
 
-Let's also add a navigation bar and footer to the layout. In the same file, under `<body>` add
+בואי נוסיף גם בר ניווט ו-footer ל-layout. באותו הקובץ, תחת `<body>` הוסיפי
 
 {% highlight html %}
 <div class="navbar navbar-fixed-top">
@@ -148,7 +148,7 @@ Let's also add a navigation bar and footer to the layout. In the same file, unde
 </div>
 {% endhighlight %}
 
-and before `</body>` add
+ולפני `</body>` הוסיפי
 
 {% highlight html %}
 <footer>
@@ -158,7 +158,7 @@ and before `</body>` add
 </footer>
 {% endhighlight %}
 
-Now let's also change the styling of the ideas table. Open `app/assets/stylesheets/application.css` and at the bottom add
+כעת בואי גם נשנה את העיצוב של טבלת הרעיונות. פתחי את הקובץ `app/assets/stylesheets/application.css` והוסיפי בתחתית
 
 {% highlight css %}
 body { padding-top: 100px; }
@@ -167,117 +167,117 @@ table, td, th { vertical-align: middle !important; border: none !important; }
 th { border-bottom: 1px solid #DDD !important; }
 {% endhighlight %}
 
-Now refresh the browser to see what was changed. You can also change the HTML & CSS further.
+כעת רפרשי את הדפדפן כדי לראות מה השתנה. את יכולה גם לשנות את ה-HTML וה-CSS עוד.
 
-**Coach:** Talk a little about CSS and layouts.
+**מדריך/ה:** דבר/י קצת על CSS ו-layouts.
 
 
-## Step 4: Adding picture uploads
+## שלב 4: הוספת העלאת תמונות
 
-We need to install a piece of software to let us upload files in Rails.
+אנחנו נצטרך להתקין חתיכת תוכנה שתאפשר לנו להעלות קבצים ב-Rails.
 
-Open `Gemfile` in the project directory using your text editor and under the line
+פתחי את הקובץ `Gemfile` בתיקיית הפרוייקט באמצעות עורך הטקסט ומתחת לשורה
 
 {% highlight ruby %}
 gem 'sqlite3'
 {% endhighlight %}
 
-add
+הוסיפי
 
 {% highlight ruby %}
 gem 'carrierwave'
 {% endhighlight %}
 
-**Coach:** Explain what libraries are and why they are useful. Describe what open source software is.
+**מדריך/ה:** הסבר/הסבירי מהן ספריות וכיצד הן מועילות. תאר/י מהי תוכנת קוד פתוח.
 
-In the terminal run:
+הטרמינל הריצי:
 
 {% highlight sh %}
 bundle
 {% endhighlight %}
 
-At this point you need to **restart the Rails server process** in the terminal. This is needed for the app to load the added library.
+בשלב זה עליך **לאתחל את שרת ה-Rails** בטרמינל. זה נחוץ על מנת שהאפליקציה תטען את הספרייה שהתווספה.
 
-Now we can generate the code for handling uploads. In the terminal run:
+כעת אנחנו יכולים לג'נרט את הקוד שמטפל בהעלאות. בטרמינל הריצי:
 
 {% highlight sh %}
 rails generate uploader Picture
 {% endhighlight %}
 
-Open `app/models/idea.rb` and under the line
+פתחי את הקובץ `app/models/idea.rb` ומתחת לשורה
 
 {% highlight ruby %}
 class Idea < ActiveRecord::Base
 {% endhighlight %}
 
-add
+הוסיפי 
 
 {% highlight ruby %}
 mount_uploader :picture, PictureUploader
 {% endhighlight %}
 
-Open `app/views/ideas/_form.html.erb` and change
+פתחי את הקובץ `app/views/ideas/_form.html.erb` והשני את 
 
 {% highlight erb %}
 <%= f.text_field :picture %>
 {% endhighlight %}
 
-to
+ל- 
 
 {% highlight erb %}
 <%= f.file_field :picture %>
 {% endhighlight %}
 
-In your browser, add new idea with a picture. When you upload a picture it doesn't look nice because it only shows a path to the file, so let's fix that.
+בדפדפן שלך, הוסיפי רעיון חדש עם תמונה. כשאת מעלה תמונה היא לא נראית כל כך טוב כי היא מציגה רק את הנתיב אל קובץ התמונה, אז בואי נתקן זאת.
 
-Open `app/views/ideas/show.html.erb` and change
+פתחי את הקובץ `app/views/ideas/show.html.erb` ושני את 
 
 {% highlight erb %}
 <%= @idea.picture %>
 {% endhighlight %}
 
-to
+ל- 
 
 {% highlight erb %}
 <%= image_tag(@idea.picture_url, :width => 600) if @idea.picture.present? %>
 {% endhighlight %}
 
-Now refresh your browser to see what changed.
+כעת רפרפשי את הדפדפן שלך כדי לראות מה השתנה.
 
-**Coach:** Talk a little about HTML.
+**מדריך/ה:** דבר/י מעט על HTML.
 
 
-## Step 5: Finetune the routes
+## שלב 5: שיפורים ו-routes
 
-If you try to open [http://localhost:3000](http://localhost:3000) it still shows the "Welcome aboard" page. Let's make it redirect to the ideas page.
+אם תנסי לגלוש ל-[http://localhost:3000](http://localhost:3000) זה יציג לך את מסך ה-"Welcome aboard". בואי נגרום לו להציג את רשימת הרעיונות.
 
-Open `config/routes.rb` and after the first line add
+פתחי את הקובץ `config/routes.rb` ואחרי השורה הראשונה הוסיפי
 
 {% highlight ruby %}
 root :to => redirect('/ideas')
 {% endhighlight %}
 
-Test the change by opening the root path in your browser.
+בדקי את השינוי ע"י גלישה לכתובת הראשית בדפדפן שלך.
 
-**Coach:** Talk about routes.
-
-
-## What next?
-
-* Add design using HTML &amp; CSS
-* Add ratings
-* Use CoffeeScript (or JavaScript) to add interaction
-* Add picture resizing to make loading the pictures faster
+**מדריך/ה:** דבר/י על routes.
 
 
-## Additional Guides
+## מה הלאה?
 
-* Guide 0: [Handy cheatsheet for Ruby, Rails, console etc.](https://github.com/PragTob/rails-beginner-cheatsheet)
-* Guide 1: [Add commenting by Janika Liiv](/commenting)
-* Guide 2: [Put your app online with Heroku by Terence Lee](/heroku)
-* Guide 3: [Build a map of workshop participants by Rails Girls Berlin](http://railsgirlsberlin.de/apptutorial/)
-* Guide 4: [Create thumbnail images for the uploads by Miha Filej](/thumbnails)
-* Guide 5: [Add design using HTML &amp; CSS by Alex Liao](/design)
-* Guide 6: [Add Authentication (user accounts) with Devise by Piotr Steininger](/devise/)
-* Guide 7: [Go through additional explanations for the App by Lucy Bain](https://github.com/lbain/railsgirls)
+* הוסיפי עיצוב באמצעות HTML ו-CSS
+* הוסיפי דירוג
+* השתמשי ב-CoffeeScript (או ב-JavaScript) כדי להוסיף אינטראקטיביות
+* הוסיפי resizing לתמונה כדי לזרז את טעינת התמונות
+
+
+## מדריכים נוספים
+
+* מדריך 0: [Handy cheatsheet for Ruby, Rails, console etc.](https://github.com/PragTob/rails-beginner-cheatsheet)
+* מדריך 1: [Add commenting by Janika Liiv](/commenting)
+* מדריך 2: [Put your app online with Heroku by Terence Lee](/heroku)
+* מדריך 3: [Build a map of workshop participants by Rails Girls Berlin](http://railsgirlsberlin.de/apptutorial/)
+* מדריך 4: [Create thumbnail images for the uploads by Miha Filej](/thumbnails)
+* מדריך 5: [Add design using HTML &amp; CSS by Alex Liao](/design)
+* מדריך 6: [Add Authentication (user accounts) with Devise by Piotr Steininger](/devise/)
+* מדריך 7: [Go through additional explanations for the App by Lucy Bain](https://github.com/lbain/railsgirls)
 

@@ -1,0 +1,63 @@
+body {
+	direction: rtl;
+}
+
+/* text alighnments */
+.text-left {
+  text-align: right;
+}
+
+.text-right {
+  text-align: left;
+}
+
+/* floats */
+header #logo {
+  float: right;
+}
+
+/* Hero */
+.hero {
+  padding: 20px 0 20px 320px;
+  background: url(../images/guides-hero.png) left 80px no-repeat;
+}
+
+.home li i {
+	float: right;
+}
+
+.home h3 {
+  margin: 0 0 0.5em 0;
+  margin-right: 90px;
+}
+
+.home p {
+  margin-right: 90px;
+  margin-left: 0;
+}
+
+i.icon-text-editor, i.icon-prompt, i.icon-browser {
+  float: right;
+  margin-left: 0;
+  margin-right: -70px;
+}
+
+h2 em {
+  margin-left: 0;
+  margin-right: -50px;
+}
+
+.os-specific .picker {
+  float: right;
+}
+
+.highlight {
+  margin-left: 0;
+  margin-right: 40px;
+  direction: ltr;
+}
+
+i.icon-small-prompt, i.icon-small-text-editor {
+  background-position: right 0;
+  float: right;
+}

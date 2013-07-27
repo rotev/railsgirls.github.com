@@ -4,27 +4,27 @@ title: Rails Girls on Heroku
 permalink: heroku
 ---
 
-# Put Your App Online With Heroku
+# העלי את האפליקציה שלך לאינטרנט עם Heroku
 
-*Created by Terence Lee, [@hone02](https://twitter.com/hone02)*
+*נוצר על-ידי Terence Lee, [@hone02](https://twitter.com/hone02)*
 
-### Get Heroku
+### התקיני את Heroku
 
-Follow steps 1 through 3 of the [quickstart guide](https://devcenter.heroku.com/articles/quickstart) to sign up, install the toolbelt, and login.
+עקבי אחר השלבים 1 עד 3 ב[מדריך המהיר](https://devcenter.heroku.com/articles/quickstart) להרשמה, התקנת ה-toolbet ו-login.
 
-__COACH__: Talk about the benefits of deploying to Heroku vs traditional servers.
+__מדריך/ה__: דבר/י על העיתרונות בהעלאה ל-Heroku לעומת שרתים מסורתיים.
 
-### Preparing your app
+### הכיני את האפליקציה שלך
 
-#### Updating our database
+#### עדכון בסיסי הנתונים שלנו
 
-First, we need to get our database to work on Heroku, which uses a different database. Please change the following in the Gemfile:
+ראשית, עלינו לגרום לבסיס הנתונים לעבוד על Heroku, שמשתמש בסיס נתונים שונה. שני בבקשה את השורה הבאה ב-Gemfile:
 
 {% highlight ruby %}
 gem 'sqlite3'
 {% endhighlight %}
 
-to
+ל-
 
 {% highlight ruby %}
 group :development do
@@ -35,9 +35,9 @@ group :production do
 end
 {% endhighlight %}
 
-Run `bundle install --without production` to setup your dependencies.
+הריצי `bundle install --without production` כדי להתקין את ה-dependencies (התוכנות הנדרשות לשם הרצת בסיס הנתונים החדש).
 
-__COACH__: You can talk about RDBMS and the different ones out there.
+__מדריך/ה__: תוכל/י לדבר על RDBMS ועל אלו שקיימים היום.
 
 #### Adding rails\_12factor
 

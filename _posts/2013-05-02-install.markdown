@@ -4,35 +4,36 @@ title: Setup recipe for Rails Girls
 permalink: install
 ---
 
-# Setup recipe for Rails Girls
-<span class="muted">Cooking time: 5min active / 15-30min passive</span>
+# מתכון התקנה ל-Rails Girls
+<span class="muted">זמן בישול: 5 דקות מעשי / 15-30 דקות המתנה</span>
 
-To build apps and other things with Ruby on Rails, we need to setup some software and the developer environment for your computer.
+כדי לבנות אפליקציות ודברים אחרים ב-Ruby on Rails, נצטרך להתקין תוכנות וסביבת פיתוח על המחשב שלך.
 
-Follow the instructions for your operating system. If you hit into any problems, don&#8217;t panic. Inform us at the event and we can solve it together.
+עקבי אחר ההוראות עבור מערכת ההפעלה שלך. אם נתקלת בבעיה - אל תבהלי. הודעי לנו על כך בארוע ונוכל לפתור את זה יחד.
 
-* [Setup for OS X](#setup_for_os_x)
-* [Setup for Windows](#setup_for_windows)
-* [Setup for Linux](#setup_for_linux)
+
+* [התקנה על OS X](#setup_for_os_x)
+* [התקנה על Windows](#setup_for_windows)
+* [התקנה על Linux](#setup_for_linux)
 
 <hr />
 
-## Setup for OS X
+## התקנה על OS X ##  {#setup_for_os_x}
 
-**Step 1.** Let&#8217;s check the version of the operating system.
+**שלב 1.** בואי נבדוק את גירסת מערכת ההפעלה.
 
-Click the Apple menu and choose *About this Mac*.
+לחצי על תפריט ה-Apple ובחירי *About this Mac*.
 
 ![Apple menu](/images/1.png "Apple menu")
 
-**Step 2.** In the window you will find the version of your operating system. If your version number starts with 10.6, 10.7 or 10.8 this guide is for you. If it&#8217;s something else, we can setup your machine at the event.
+**שלב 2.** בחלון שנפתח תמצאי את גירסת מערכת ההפעלה שלך. אם מספר הגירסה שלך מתחיל ב- 10.6, 10.7 או 10.8 זה מדריך בשבילך. אם זה משהו אחר, נוכל להתקין את המכונה שלך בארוע.
 
 ![About this Mac dialog](/images/2.png "About this Mac dialog")
 
-**Step 3.** Download the RailsInstaller for your version of OS X:
+**שלב 3.** הורידי את ה-RailsInstaller לגירסת ה-OS X שלך:
 
-* [RailsInstaller for 10.7 and 10.8](http://railsinstaller.s3.amazonaws.com/RailsInstaller-1.0.4-osx-10.7.app.tgz) <span class="muted">(325MB)</span>
-* [RailsInstaller for 10.6](http://railsinstaller.s3.amazonaws.com/RailsInstaller-1.0.4-osx-10.6.app.tgz) <span class="muted">(224MB)</span>
+* [RailsInstaller עבור 10.7 ו-10.8](http://railsinstaller.s3.amazonaws.com/RailsInstaller-1.0.4-osx-10.7.app.tgz) <span class="muted">(325MB)</span>
+* [RailsInstaller עבור 10.6](http://railsinstaller.s3.amazonaws.com/RailsInstaller-1.0.4-osx-10.6.app.tgz) <span class="muted">(224MB)</span>
 
 Double click the downloaded file and it will unpack it into the current directory. Double click the the newly unpacked 'RailsInstaller-1.0.3-osx-10.7.app' or 'RailsInstaller-1.0.3-osx-10.6.app' and follow the instructions. It will open a README file with 'Rails Installer OS X' at the top. Please **ignore** the instructions in this file.
 
@@ -50,7 +51,7 @@ Now you should have a working Ruby on Rails programming setup. Congrats!
 
 <hr />
 
-## Setup for Windows
+## Setup for Windows ##  {#setup_for_windows}
 
 Download [RailsInstaller](http://rubyforge.org/frs/download.php/76862/railsinstaller-2.2.1.exe) and run it. Click through the installer using the default options.
 
@@ -70,7 +71,7 @@ Now you should have a working Ruby on Rails programming setup. Congrats!
 
 <hr />
 
-## Setup for Linux
+## Setup for Linux ##  {#setup_for_linux}
 
 To install the Ruby on Rails development environment you just need to copy the line below for your Linux distribution (Ubuntu or Fedora), paste it in the Terminal and press Enter. Enjoy the text flying on the screen; it will take quite some time. Grabbing a refreshing drink before starting is encouraged.
 

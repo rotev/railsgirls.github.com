@@ -19,7 +19,7 @@ function addIcons() {
 }
 
 function initializeOsSwitchers() {
-  $(".os-specific").append("<span class='picker'>Choose your operating system: <a href='#' class='win-link'>Windows</a> <a href='#' class='nix-link'>Other</a></span>").find(".win-link").click(function(event) {
+  $(".os-specific").append("<span class='picker'>בחרי את מערכת ההפעלה שלך: <a href='#' class='win-link'>Windows</a> <a href='#' class='nix-link'>אחר</a></span>").find(".win-link").click(function(event) {
     event.preventDefault();
     saveOs("win");
 
