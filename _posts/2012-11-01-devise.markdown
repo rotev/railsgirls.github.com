@@ -1,50 +1,50 @@
 ---
 layout: default
-title: Adding Authentication with Devise
+title: הוספת אותנטיקציה עם Devise
 permalink: devise
 ---
 
-# Adding Authentication with Devise
+# הוספת אותנטיקציה עם Devise
 
-*Created by Piotr Steininger, [@polishprince](https://twitter.com/polishprince)*
+*נוצר על-ידי Piotr Steininger, [@polishprince](https://twitter.com/polishprince)*
 
-*Updated by Ernesto Jimenez, [@ernesto_jimenez](https://twitter.com/ernesto_jimenez)*
+*עודכן על-ידי Ernesto Jimenez, [@ernesto_jimenez](https://twitter.com/ernesto_jimenez)*
 
-**This guide assumes that you have already built a RailsGirls app by ** [**following the app development guide**](/app).
+**מדריך זה מניח שכבר בנית אפלקציית RailsGirls לפי ** [**מדריך בניית האפליקציה הראשונה שלך**](/app).
 
 
-## Step 0: Add devise gem
+## שלב 0: הוסיפי את ה-devise gem
 
-Open up your `Gemfile` and add this line
+פתחי את קובץ ה-`Gemfile` והוסיפי לו את השורה הבאה
 
 {% highlight ruby %}
 gem 'devise'
 {% endhighlight %}
-and run
+ולאחר מכן הריצי את הפקודה
 {% highlight sh %}
 bundle install
 {% endhighlight %}
-to install the gem. **Also remember to restart the Rails server**.
+כדי להתקין את ה-gem. **כמו כן, זכרי לאתחל את שרת ה-Rails.**.
 
-## Step 1: Set up devise in your app
+## שלב 1: הרכיבי את devise לתוך האפליקציה
 
-Run the following command in the terminal.
+הריצי את הפקודה הבאה בטרמינל.
 
 {% highlight sh %}
 rails g devise:install
 {% endhighlight %}
 
 
-## Step 2: Configure Devise
+## שלב 2: הגדירי את Devise
 
-Ensure you have defined default url options in your environments files. Open up `config/environments/development.rb` and add this line:
+ודאי שהגדרת את ה-URL הדיפולטיווי של האפליקציה בקובץ environment. פתחי את הקובץ `config/environments/development.rb` והוסיפי את השורה הזאת:
 {% highlight ruby %}
    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 {% endhighlight %}
 
-before the `end` keyword.
+לפני המילה `end`.
 
-Open up `app/views/layouts/application.html.erb` and add:
+פתחי את `app/views/layouts/application.html.erb` והוסיפי:
 
 {% highlight erb %}
 <% if notice %>
@@ -54,39 +54,38 @@ Open up `app/views/layouts/application.html.erb` and add:
   <p class="alert alert-error"><%= alert %></p>
 <% end %>
 {% endhighlight %}
-right above
+שורה מעל
 {% highlight ruby %}
    <%= yield %>
 {% endhighlight %}
 
-Finally, if you plan to [deploy to heroku](/heroku) you should open up `config/application.rb` and add this line:
+לסיום, אם את מתכננת [להעלות ל-Heroku](/heroku) פתחי את `config/application.rb` והוסיפי את השורה הזו:
 {% highlight ruby %}
   config.assets.initialize_on_precompile = false
 {% endhighlight %}
-as third line from the bottom (before the first of two `end` keywords)
+כשורה השלישית מהסוף (לפני הראשונה מבין שתי ה-`end`)
 
-## Step 3: Setup the User model
+## שלב 3: בני את ה-user model
 
-We'll use a bundled generator script to create the User model.
+נשתמש ב-generator שהגיע עם ה-gem כדי שיבנה לנו אוטומטית את ה-user model.
 {% highlight sh %}
    rails g devise user
    rake db:migrate
 {% endhighlight %}
 
-**Coach:** Explain what user model has been generated. What are the
-fields?
+**Coach:** הסבר/הסבירי את ה-user model שנוצר. מהם השדות שלו?
 
-## Step 4: Create your first user
+## שלב 4: צרי את המשתמש הראשון שלך
 
-Now that you have set everyting up you can create your first user. Devise creates all the code and routes required to create accounts, log in, log out, etc.
+כעת אחרי שהכנו את הכל, תוכלי ליצור את המשתמש הראשון. Devise יוצר את כל הקוד ואת ה-routes הנחוצים ליצירת חשבון, log in, log out וכו'.
 
-Make sure your rails server is running, open [http://localhost:3000/users/sign_up](http://localhost:3000/users/sign_up) and create your user account.
+ודאי ששרת ה-Rails רץ לגלשי לכתובת [http://localhost:3000/users/sign_up](http://localhost:3000/users/sign_up) וצרי את חשבון המשתמש שלך.
 
-## Step 5: Add sign-up and login links
+## שלב 5: הוסיפי לינקים להרשמה וכניסה
 
-All we need to do now is to add appropriate links or notice about the user being logged in in the top right corner of the navigation bar.
+כל מה שנצטרך לעשות עכשיו הוא להוסיף את הלינקים להרשמה או כניסה לאתר בפינת ב-Header של האתר או בתפריט הניווט. במידה והמשתמש כבר מחובר למערכת, נציג הודעה במתאימה במקום הלינקים האלו.
 
-In order to do that, edit `app/views/layouts/application.html.erb` add:
+לשם כך, ערכי את `app/views/layouts/application.html.erb` והיספי:
 {% highlight erb %}
 <p class="navbar-text pull-right">
 <% if user_signed_in? %>
@@ -98,7 +97,7 @@ In order to do that, edit `app/views/layouts/application.html.erb` add:
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
 {% endhighlight %}
-right after
+מיד אחרי
 {% highlight erb %}
 <ul class="nav">
   <li class="active"><a href="/ideas">Ideas</a></li>
@@ -106,15 +105,15 @@ right after
 {% endhighlight %}
 
 
-Open your browser and try logging in and out from.
+פתחי את הדפדפן ונסי להכנס ולצאת מהאפליקציה.
 
-**Coach:** Talk about the `user_signed_in?` and `current_user` helpers. Why are they useful?
+**Coach:** דבר/י על `user_signed_in?` ו- `current_user` helpers. למה הם משמשים?
 
-## What next?
+## מה הלאה?
 
-* Add extra fields to the User model
-* Add relationships between users and ideas
-* Restrict users to only be able to edit their own ideas
-* Expand to use roles or permissions (use one of the popular authorization gem like CanCan)
+* הוסיפי שדות נוספים ל-user model 
+* הוסיפי קשרים בין משתמשים ורעיונות
+* דאגי לכך שמשתמשים יוכלו לערוך רק את הרעיונות שלהם
+* השתמשי ב-roles ו-permissions (השתמשי באחד ה-gem-ים הפופולארים CanCan)
 
 

@@ -38,7 +38,7 @@ permalink: app
 ראשית, נפתח את הטרמינל:
 
 * Mac OS X: פתחי את Spotlight, כיתבי *Terminal* ולחצי על אפליקצית ה-*Terminal*.
-* Windows: לחצי Start וחפשי את *Command Prompt*, אחר כך, אחר כך לחצי על *Command Prompt with Ruby on Rails*.
+* Windows: לחצי על Start וחפשי את *Command Prompt*, אחר כך, אחר כך לחצי על *Command Prompt with Ruby on Rails*.
 * Linux (Ubuntu): חפי את *Terminal* on the dash and click *Terminal*.
 
 לאחר מכן הקלידי את הפקודות הבאות בטרמינל:
@@ -264,7 +264,7 @@ root :to => redirect('/ideas')
 
 ## מה הלאה?
 
-* הוסיפי עיצוב באמצעות HTML ו-CSS
+* הוסיפי עיצוב באמצעות HTML & CSS
 * הוסיפי דירוג
 * השתמשי ב-CoffeeScript (או ב-JavaScript) כדי להוסיף אינטראקטיביות
 * הוסיפי resizing לתמונה כדי לזרז את טעינת התמונות
@@ -272,9 +272,9 @@ root :to => redirect('/ideas')
 
 ## מדריכים נוספים
 
-* מדריך 0: [Handy cheatsheet for Ruby, Rails, console etc.](https://github.com/PragTob/rails-beginner-cheatsheet)
-* מדריך 1: [Add commenting by Janika Liiv](/commenting)
-* מדריך 2: [Put your app online with Heroku by Terence Lee](/heroku)
+* מדריך 0: [Cheatsheet שימושי ל-Ruby, Rails, console ועוד](https://github.com/PragTob/rails-beginner-cheatsheet)
+* מדריך 1: [הוסיפי תגובות מאת Janika Liiv](/commenting)
+* מדריך 2: [העלי את האפליקציה שלך לאינטרנט עם Heroku, מאת Terence Lee](/heroku)
 * מדריך 3: [Build a map of workshop participants by Rails Girls Berlin](http://railsgirlsberlin.de/apptutorial/)
 * מדריך 4: [Create thumbnail images for the uploads by Miha Filej](/thumbnails)
 * מדריך 5: [Add design using HTML &amp; CSS by Alex Liao](/design)
