@@ -18,11 +18,11 @@ permalink: app
 <h3><i class="icon-text-editor">&nbsp;</i></h3>
 ### עורך טקסט
 
-[Sublime Text](http://www.sublimetext.com), [Komodo Edit](http://www.activestate.com/komodo-edit), Vim, Emacs, ו-Gedit הם דוגמאות לעורי טקסט שאת יכולה להשתמש בהם לכתיבת קוד ועריכת קבצים.
+[Sublime Text](http://www.sublimetext.com), [Komodo Edit](http://www.activestate.com/komodo-edit), Vim, Emacs, ו-Gedit הם דוגמאות לעורכי טקסט שאת יכולה להשתמש בהם לכתיבת קוד ועריכת קבצים.
 
 <h3><i class="icon-prompt">&nbsp;</i></h3>
 ### Terminal (נקרא גם Prompt ב-Windows)
-כן את מפעילה את שרת ה-Rails ומריצה פקודות.
+כאן את מפעילה את שרת ה-Rails ומריצה פקודות.
 
 <h3><i class="icon-browser">&nbsp;</i></h3>
 ### דפדפן
@@ -38,8 +38,8 @@ permalink: app
 ראשית, נפתח את הטרמינל:
 
 * Mac OS X: פתחי את Spotlight, כיתבי *Terminal* ולחצי על אפליקצית ה-*Terminal*.
-* Windows: לחצי Start וחפשי את *Command Prompt*, אחר כך, אחר כך לחצי על *Command Prompt with Ruby on Rails*.
-* Linux (Ubuntu): חפי את *Terminal* on the dash and click *Terminal*.
+* Windows: לחצי Start וחפשי את *Command Prompt*, אחר כך, לחצי על *Command Prompt with Ruby on Rails*.
+* Linux (Ubuntu): חפשי את *Terminal* על שולחן העבודה ולחצי על *Terminal*.
 
 לאחר מכן הקלידי את הפקודות הבאות בטרמינל:
 
@@ -69,12 +69,12 @@ ruby script\rails server
 
 לחצי `CTRL-C` בטרמינל כדי לכבות את השרת.
 
-**דריכה:** הסבירי מה כל פקודה עושה. מה ג'ונרט? מה עושה השרת?
+**מדריך/ה:** הסבירי מה כל פקודה עושה. מה ג'ונרט? מה עושה השרת?
 
 
 ## *2.*יצירת שלד רעיון
 
-אנחנו הולכים להשתמש בפונקציונליות ה-scaffold (שלד) של Rails כדי ליצור אפליקציה התחלתית שמאפשרת לשנו להציג רשימה, להוסיף, למחוק, לערוך ולצפות בדברים; במקרה שלנו: רעיונות.
+אנחנו הולכים להשתמש בפונקציונליות ה-scaffold (שלד) של Rails כדי ליצור אפליקציה התחלתית שמאפשרת לנו להציג רשימה, להוסיף, למחוק, לערוך ולצפות בדברים; במקרה שלנו: רעיונות.
 
 **מדריך/ה:** מה זה scaffolding ב-Rails? (הסבר/הסבירי את הפקודה, את שם ה-model ואת הטבלה המשוייכת לו, naming conventions, מאפיינים וטיפוסים, וכו'.) מהן מיגרציות ובשביל מה צריך אותן?
 
@@ -107,7 +107,7 @@ ruby script\rails server
 
 האפליקציה עדיין לא נראית משהו. בואי נעשה עם זה משהו. נוסיף את הפרוייקט Twitter Bootstrap כדי לתת לנו סטייל נחמד יותר בקלות רבה.
 
-פתחי את הקובץ `app/views/layouts/application.html.erb` בערוך הטקסט שלך, ומעל השורה
+פתחי את הקובץ `app/views/layouts/application.html.erb` בעורך הטקסט שלך, ומעל השורה
 
 {% highlight erb %}
 <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
@@ -172,7 +172,7 @@ th { border-bottom: 1px solid #DDD !important; }
 **מדריך/ה:** דבר/י קצת על CSS ו-layouts.
 
 
-## שלב 4: הוספת העלאת תמונות
+## שלב 4: הוספת אפשרות להעלאת תמונות
 
 אנחנו נצטרך להתקין חתיכת תוכנה שתאפשר לנו להעלות קבצים ב-Rails.
 
@@ -190,7 +190,7 @@ gem 'carrierwave'
 
 **מדריך/ה:** הסבר/הסבירי מהן ספריות וכיצד הן מועילות. תאר/י מהי תוכנת קוד פתוח.
 
-הטרמינל הריצי:
+בטרמינל הריצי:
 
 {% highlight sh %}
 bundle
@@ -216,7 +216,7 @@ class Idea < ActiveRecord::Base
 mount_uploader :picture, PictureUploader
 {% endhighlight %}
 
-פתחי את הקובץ `app/views/ideas/_form.html.erb` והשני את 
+פתחי את הקובץ `app/views/ideas/_form.html.erb` ושני את 
 
 {% highlight erb %}
 <%= f.text_field :picture %>
