@@ -22,7 +22,7 @@ permalink: install
 
 **שלב 1.** בואי נבדוק את גירסת מערכת ההפעלה.
 
-לחצי על תפריט ה-Apple ובחירי *About this Mac*.
+לחצי על תפריט ה-Apple ובחרי *About this Mac*.
 
 ![Apple menu](/images/1.png "Apple menu")
 
@@ -35,63 +35,65 @@ permalink: install
 * [RailsInstaller עבור 10.7 ו-10.8](http://railsinstaller.s3.amazonaws.com/RailsInstaller-1.0.4-osx-10.7.app.tgz) <span class="muted">(325MB)</span>
 * [RailsInstaller עבור 10.6](http://railsinstaller.s3.amazonaws.com/RailsInstaller-1.0.4-osx-10.6.app.tgz) <span class="muted">(224MB)</span>
 
-Double click the downloaded file and it will unpack it into the current directory. Double click the the newly unpacked 'RailsInstaller-1.0.3-osx-10.7.app' or 'RailsInstaller-1.0.3-osx-10.6.app' and follow the instructions. It will open a README file with 'Rails Installer OS X' at the top. Please **ignore** the instructions in this file.
+הקליקי פעמיים על הקובץ להורדה והוא יפתח לתוך התיקיה הנוכחית. לחצי פעמיים על הקובץ החדש שנוצר - 'RailsInstaller-1.0.3-osx-10.7.app' או 'RailsInstaller-1.0.3-osx-10.6.app' - ועקבי אחר ההוראות. ההתקנה תגרום לפתיחת קובץ README עם הכותרת 'Rails Installer OS X'. אנא **התעלמי** מההוראות בקובץ הזה.
 
-If the Rails version wasn't latest, you could update it using a following command on terminal.
+אם גרסת ה- Rails אינה האחרונה, תוכלי לעדכן אותה בעזרת הפקודה הבאה בטרמינל.
 
 {% highlight sh %}
 gem update rails --no-ri --no-rdoc
 {% endhighlight %}
 
-**Final step.** Install a text editor to edit code files. For the workshop we recommend the text editor Sublime Text.
+**שלב אחרון.** את תזדקקי גם לעורך טקסט על מנת לערוך קבצי קוד. אנו ממליצות על Sublime Text.
 
-* [Download Sublime Text and install it](http://www.sublimetext.com/2)
+* [הורידי את Sublime Text והתקיני אותו](http://www.sublimetext.com/2)
 
-Now you should have a working Ruby on Rails programming setup. Congrats!
+כעת צריכה להיות לך סביבת עבודה מוכנה לתכנות ב- Ruby on Rails. ברכותינו!	
 
 <hr />
 
-## Setup for Windows ##  {#setup_for_windows}
+## התקנה על Windows ##  {#setup_for_windows}
 
-Download [RailsInstaller](http://rubyforge.org/frs/download.php/76862/railsinstaller-2.2.1.exe) and run it. Click through the installer using the default options.
+הורידי [RailsInstaller](http://rubyforge.org/frs/download.php/76862/railsinstaller-2.2.1.exe) והריצי אותו. בחרי באופציות ברירת המחדל באשף ההתקנה.
 
-If the Rails version wasn't latest, you could update it using a following command on "Command Prompt with Ruby on Rails".
+אם גרסת ה- Rails אינה האחרונה, תוכלי לעדכן אותה בעזרת הפקודה הבאה ב- "Command Prompt with Ruby on Rails".
 
 {% highlight sh %}
 gem update rails --no-ri --no-rdoc
 {% endhighlight %}
+
+נדרשת התקנה של Git ושל SSH-keys אם ברצונך [לאחסן את האפליקציה ב- Heroku](/heroku).
 
 Installation of Git and SSH-keys is required if you want to [put your app online with Heroku](/heroku).
 
-**Final step.** You also need a text editor to edit code files. For the workshop we recommend the text editor Sublime Text.
+**שלב אחרון.** את תזדקקי גם לעורך טקסט על מנת לערוך קבצי קוד. אנו ממליצות על Sublime Text.
 
-* [Download Sublime Text and install it](http://www.sublimetext.com/2)
+* [הורידי את Sublime Text והתקיני אותו](http://www.sublimetext.com/2)
 
-Now you should have a working Ruby on Rails programming setup. Congrats!
+כעת צריכה להיות לך סביבת עבודה מוכנה לתכנות ב- Ruby on Rails. ברכותינו!	
 
 <hr />
 
-## Setup for Linux ##  {#setup_for_linux}
+## התקנה על Linux ##  {#setup_for_linux}
 
-To install the Ruby on Rails development environment you just need to copy the line below for your Linux distribution (Ubuntu or Fedora), paste it in the Terminal and press Enter. Enjoy the text flying on the screen; it will take quite some time. Grabbing a refreshing drink before starting is encouraged.
+על מנת להתקין את סביבת הפיתוח של Ruby on Rails כל שעליך לעשות הוא להעתיק את השורה הבאה בהתאם להפצת הלינוקס שלך (Ubuntu או Fedora), להדביק אותה בטרמינל וללחוץ על Enter. את מוזמנת להנות בזמן שהטקסט רץ על המסך; זה עשוי לקחת זמן מה. מומלץ לשתות משקה מרענן לפני שמתחילים.
 
-**For Ubuntu:**
+**עבור Ubuntu:**
 
 {% highlight sh %}
 bash < <(curl -s https://raw.github.com/railsgirls/installation-scripts/master/rails-install-ubuntu.sh)
 {% endhighlight %}
 
-**For Fedora:**
+**עבור Fedora:**
 
 {% highlight sh %}
 bash < <(curl -s https://raw.github.com/railsgirls/installation-scripts/master/rails-install-fedora.sh)
 {% endhighlight %}
 
-**Final step.** You also need a text editor to edit code files. For the workshop we recommend the text editor Sublime Text.
+**שלב אחרון.** את תזדקקי גם לעורך טקסט על מנת לערוך קבצי קוד. אנו ממליצות על Sublime Text.
 
-* [Download Sublime Text and install it](http://www.sublimetext.com/2)
+* [הורידי את Sublime Text והתקיני אותו](http://www.sublimetext.com/2)
 
-Now you should have a working Ruby on Rails programming setup. Congrats!
+כעת צריכה להיות לך סביבת עבודה מוכנה לתכנות ב- Ruby on Rails. ברכותינו!	
 
 <hr />
 
