@@ -61,3 +61,8 @@ i.icon-small-prompt, i.icon-small-text-editor {
   background-position: right 0;
   float: right;
 }
+
+/* workaround for the markdown lists failing with hebrew lines. */
+.hebrew-fix {
+  color: white;
+}

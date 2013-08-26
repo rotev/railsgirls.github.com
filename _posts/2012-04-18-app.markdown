@@ -265,19 +265,19 @@ root :to => redirect('/ideas')
 ## מה הלאה?
 
 * הוסיפי עיצוב באמצעות HTML ו-CSS
-* הוסיפי דירוג
+* הוסיפי דירוג <span class="hebrew-fix">f</span>
 * השתמשי ב-CoffeeScript (או ב-JavaScript) כדי להוסיף אינטראקטיביות
 * הוסיפי resizing לתמונה כדי לזרז את טעינת התמונות
 
 
 ## מדריכים נוספים
 
-* מדריך 0: [Handy cheatsheet for Ruby, Rails, console etc.](https://github.com/PragTob/rails-beginner-cheatsheet)
-* מדריך 1: [Add commenting by Janika Liiv](/commenting)
-* מדריך 2: [Put your app online with Heroku by Terence Lee](/heroku)
-* מדריך 3: [Build a map of workshop participants by Rails Girls Berlin](http://railsgirlsberlin.de/apptutorial/)
-* מדריך 4: [Create thumbnail images for the uploads by Miha Filej](/thumbnails)
-* מדריך 5: [Add design using HTML &amp; CSS by Alex Liao](/design)
-* מדריך 6: [Add Authentication (user accounts) with Devise by Piotr Steininger](/devise/)
-* מדריך 7: [Go through additional explanations for the App by Lucy Bain](https://github.com/lbain/railsgirls)
+* מדריך 0: [Cheatsheet שימושי ל-Ruby, Rails, console ועוד.](https://github.com/PragTob/rails-beginner-cheatsheet)
+* מדריך 1: [הוסיפי תגובות מאת Janika Liiv](/commenting)
+* מדריך 2: [העלי את האפליקצייה שלך לאינטרנט עם Heroku מאת Terence Lee](/heroku)
+* מדריך 3: [בני מפה של משתתפות הסדנה מאת Rails Girls Berlin (אנגלית)](http://railsgirlsberlin.de/apptutorial/)
+* מדריך 4: [צרי תמונות מוקטנות (thumbnail) עבור תמונות שהועלו לאפליקצייה מאת Miha Filej](/thumbnails)
+* מדריך 5: [הוסיפי עיצוב באמצעות HTML ו-CSS מאת Alex Liao](/design)
+* מדריך 6: [הוסיפי אותנטיקציה (משתמשים) עם Devise מאת Piotr Steininger](/devise/)
+* מדריך 7: [קראי הסברים נוספים אודות האפליקצייה מאת Lucy Bain](https://github.com/lbain/railsgirls)
 

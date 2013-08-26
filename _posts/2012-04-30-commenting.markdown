@@ -1,87 +1,87 @@
 ---
 layout: default
-title: Commenting functionality for the Rails Girls app
+title: הוספת תגובות לאפליקציית Rails Girls
 permalink: commenting
 ---
-# Commenting for Rails Girls App
-*Created by Janika Liiv, [@janikaliiv](https://twitter.com/janikaliiv)*
+# תגובות לאפליקציית Rails Girls
+*מאת Janika Liiv, [@janikaliiv](https://twitter.com/janikaliiv)*
 
-We are going to add the possibility to comment ideas in your *railsgirls* application.
+אנחנו הולכות להוסיף את האפשרות להגיב לרעיונות באפליקציית ה-*railsgirls* שלך.
 
-The instructions for installing rails and building the ideas app can be found [here](/app)
+ניתן למצוא את הוראות ההתקנה ובניית אפליקציית הרעיונות [כאן](/app).
 
-## Step 1: Add foreigner gem
+## שלב 1: הוסיפי את ה-foreigner gem
 
-Add to Gemfile
+הוסיפי לקובץ ה-Gemfile
 {% highlight ruby %}
 gem 'foreigner'
 {% endhighlight %}
 
-In your terminal stop the server if it's running and type
+בטרמינל שלך הפסיקי את השרת אם הוא רץ כרגע, והקלידי
 {% highlight sh %}
 bundle install
 {% endhighlight %}
 
-## Step 2: Create comment scaffold
+## שלב 2: צרי את שלד התגובה
 
-Create comment scaffold, with the commentator name, the comment body (contents of the comment) and with the reference to the ideas table (idea_id). 
+צרי את שלד התגובה עם שם המגיב, גוף התגובה (התוכן) ועם הפניה (reference) לטבלת הרעיונות (idea_id).
 {% highlight sh %}
 rails g scaffold comment user_name:string body:text idea_id:integer
 {% endhighlight %}
 
-## Step 3: Add foreign key connections
-Add to migration the foreign key connection. Open db/migrate/ and the file, which name ends with 'create_comments.rb'. After
+## שלב 3: הוסיפי foreign key
+הוסיפי למיגרציה את ה-foreign key. מתיקיית db/migrate פתחי את הקובץ שמסתיים ב-'create_comments.rb'. לאחר
 {% highlight ruby %}
-t.timestamps
+	t.timestamps
 end
 {% endhighlight %}
 
-add
+הוסיפי
 {% highlight ruby %}
 add_foreign_key :comments, :ideas
 {% endhighlight %}
 
-Now migrate the database changes by typing in your terminal
+כעת, הריצי את המיגרציה על מנת לעדכן את השינויים ב-database באמצעות הפקודה
 {% highlight sh %}
 rake db:migrate
 {% endhighlight %}
 
-start your server with:
+הפעילי את השרת באמצעות:
 {% highlight sh %}
 rails s
 {% endhighlight %}
 
-## Step 4: Add relations to models
+## שלב 4: הוסיפי relations (קשרים) למודל התגובה
 
-You need to make sure that Rails knows the connection between objects (ideas and comments). 
-As one idea can have many comments we need to make sure the idea model knows that. 
-Open app/models/idea.rb and after the row
+את צריכה לוודא ש-Rails מבין את הקשר בין האובייקטים רעיון ותגובה.
+מאחר ורעיון בודד יכול להכיל תגובות רבות, אנחנו צריכים לוודא שמודל הרעיון יודע את זה.
+פתחי את app/models/idea.rb ולאחר השורה
 {% highlight ruby %}
 class Idea < ActiveRecord::Base
 {% endhighlight %}
-add
+הוסיפי
 {% highlight ruby %}
 has_many :comments
 {% endhighlight %}
 
-The comment also has to know that it belongs to an idea.So open app/models/comment.rb and after
+גם מודל התגובה צריך לדעת שהוא משוייך לרעיון. פתחי את app/models/comment.rb ולאחר
 {% highlight ruby %}
 class Comment < ActiveRecord::Base
 {% endhighlight %}
 
-add the row
+הוסיפי את השורה
 {% highlight ruby %}
 belongs_to :idea
 {% endhighlight %}
 
-## Step 5: Render the comment form and existing comments
+## שלב 5: הדפיסי למסך את טופס הוספת התגובה ואת רשימת התגובות הקיימות
 
-Open app/views/ideas/show.html and after the image_tag
+פתחי את app/views/ideas/show.html ואחרי ה-image_tag
 {% highlight erb %}
 <%= image_tag(@idea.picture_url, :width => 600) if @idea.picture.present? %>
 {% endhighlight %}
 
-add
+הוסיפי
 {% highlight erb %}
 <h3>Comments</h3>
 <% @idea.comments.each do |comment| %>
@@ -94,17 +94,17 @@ add
 <%= render 'comments/form' %>
 {% endhighlight %}
 
-In app/controllers/ideas_controller.rb add to show action after the row
+בקובץ app/controllers/ideas_controller.rb הוסיפי בפעולת ה-show אחרי השורה
 {% highlight ruby %}
 @idea = Idea.find(params[:id])
 {% endhighlight %}
 
-this
+את
 {% highlight ruby %}
 @comment = @idea.comments.build
 {% endhighlight %}
 
-Open app/views/comments/_form.html and after
+פתחי את הקובץ app/views/comments/_form.html ולאחר
 {% highlight erb %}
   <div class="field">
     <%= f.label :body %><br />
@@ -112,9 +112,9 @@ Open app/views/comments/_form.html and after
   </div>
 {% endhighlight %}
 
-
-add the row
+הוסיפי את השורה
 {% highlight erb %}
 <%= f.hidden_field :idea_id %>
 {% endhighlight %}
-That's it. Now view an idea you have inserted to your application and there you should see the form for inserting a comment
+
+זהו! כעת צפי ברעיון שהוספת לאפליקצייה שלך ושם תוכלי לראות את טופס הוספת התגובה.
