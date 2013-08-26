@@ -12,13 +12,13 @@ permalink: heroku
 
 עקבי אחר השלבים 1 עד 3 ב[מדריך המהיר](https://devcenter.heroku.com/articles/quickstart) להרשמה, התקנת ה-toolbet ו-login.
 
-__מדריך/ה__: דבר/י על העיתרונות בהעלאה ל-Heroku לעומת שרתים מסורתיים.
+__מדריך/ה__: דבר/י על היתרונות בהעלאה ל-Heroku לעומת שרתים מסורתיים.
 
 ### הכיני את האפליקציה שלך
 
 #### עדכון בסיסי הנתונים שלנו
 
-ראשית, עלינו לגרום לבסיס הנתונים לעבוד על Heroku, שמשתמש בסיס נתונים שונה. שני בבקשה את השורה הבאה ב-Gemfile:
+ראשית, עלינו לגרום לבסיס הנתונים לעבוד על Heroku, שמשתמש בבסיס נתונים שונה. שני בבקשה את השורה הבאה ב-Gemfile:
 
 {% highlight ruby %}
 gem 'sqlite3'
@@ -41,8 +41,8 @@ __מדריך/ה__: תוכל/י לדבר על RDBMS ועל אלו שקיימים 
 
 #### הוספת rails\_12factor
 
-בשלב הבא נצטרך להוסיף את rails\_12factor ל-Gemfile שלנו כדי שהאפליקציה תוכל לרוץ על Heroku.
-שני בבקשה את השורות הבאות ב-Gemfile:
+כעת, עלינו להוסיף את rails\_12factor ל- Gemfile שלנו כדי להפוך את האפליקציה שלנו לזמינה ב- Heroku.
+אנא שני את החלק הבא ב- Gemfile:
 
 {% highlight ruby %}
 group :production do
@@ -59,11 +59,11 @@ group :production do
 end
 {% endhighlight %}
 
-__COACH__: תוכל/י לדבר על loggin על Heroku.
+__מדריך/ה__: תוכל/י לדבר על logging ב- Heroku.
 
-#### מערכות Version Control
+#### כלי ניהול גרסאות
 
-אנחנו צריכים להוסיף את הקוד שלנו ל-version control. תוכלי לעשות זאת ע"י הרצת הפקודות הבאות בטרמינל.
+עלינו להוסיף את הקוד שלנו לכלי ניהול גרסאות. תוכלי לעשות זאת על ידי הרצת הפקודות הבאות בטרמינל:
 
 {% highlight sh %}
 git init
@@ -71,14 +71,14 @@ git add .
 git commit -m "initial commit"
 {% endhighlight %}
 
-__COACH__: זה זמן טוב לדבר על מערכות version control ו-git.
+__מדריך/ה__: זהו זמן טוב לדבר על כלים לניהול גרסאות ועל git.
 
 
-### העלאת האפליקציה שלך
+### פרסי את האפליקציה שלך (Deployment)
 
 #### יצירת האפליקציה
 
-אנחנו צריכים ליצור את האפליקציה שלנו ע"י הרצת הפקודה `heroku create` בטרמינל ולקבל חזרה משהו כזה:
+עלינו ליצור את אפליקציית heroku על ידי כך שנכתוב `heroku create` בטרמינל ונראה משהו בסגנון הזה:
 
 {% highlight sh %}
 Creating evening-sky-7498... done, stack is cedar
@@ -86,11 +86,11 @@ http://evening-sky-7498.herokuapp.com/ | git@heroku.com:evening-sky-7498.git
 Git remote heroku added
 {% endhighlight %}
 
-במידה ו-"evening-sky-7498" הוא שם האפליקציה שלך.
+במקרה זה, "evening-sky-7498" הוא שם האפליקציה שלך.
 
-#### העלאת הקוד
+#### דחיפת הקוד (Push)
 
-בשלב הבא נצטרך להעלות את הקוד שלנו ל-Heroku ע"י הרצת הפקודה `git push heroku master`. התוצאה אמורה להראות בערך כך:
+כעת עלינו לדחוף את הקוד שלנו ל- heroku על ידי כתיבת `git push heroku master`. את תראי את פלט פקודת ה- push באופן הבא:
 
 {% highlight sh %}
 Counting objects: 134, done.
@@ -109,11 +109,11 @@ Total 134 (delta 26), reused 0 (delta 0)
        http://evening-sky-7498.herokuapp.com deployed to Heroku
 {% endhighlight %}
 
-כאשר העלאת האפליקציה תסתיים את תראי את הטקסט "Launching..." כלעיל.
+תדעי שדחיפת הקוד הסתיימה כאשר תראי את הטקסט "Launching..." כמו בדוגמה לעיל.
 
-#### Migrate database
+#### להגר את בסיס הנתונים (Database migrate)
 
-בשלב הבא נצטרך לעדכן את ה-database שלנו אונליין עם השינויים שביצענו לוקאלית בזמן הסדנה. נעשה זאת באמצעות הפקודה `heroku run rake db:migrate`
+בשלב הבא עלינו להגר את בסיס הנתונים כפי שעשינו באופן מקומי במהלך הסדנה: `heroku run rake db:migrate`
 
-כשהפקודה האחרונה תסתיים לרוץ, תוכלי לגלוש אליה באמצעות ה-URL המתאים. לדוגמה, עבור האפליקציה הזו, ה-URL יהיה [http://evening-sky-7498.herokuapp.com/](http://evening-sky-7498.herokuapp.com). הפקודה `heroku open` יודעת לפתוח את הדפדפן ולגלוש ל-URL המתאים לאפליקציה שלך.
+כאשר הפקודה הזו מסיימת לרוץ, תוכלי גשת אל האפליקציה המבוססת דרך ה- url. עבור האפליקציה שבדוגמה הזו, תוכלי לגשת אל [http://evening-sky-7498.herokuapp.com](http://evening-sky-7498.herokuapp.com). תוכלי גם לכתוב `heroku open` בטרמינל כדי להגיע אל הדף.
 

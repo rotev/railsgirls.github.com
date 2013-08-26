@@ -4,18 +4,18 @@ title: הוספת אותנטיקציה עם Devise
 permalink: devise
 ---
 
-# הוספת אותנטיקציה עם Devise
+# הוסיפי אותנטיקציה עם Devise
 
-*נוצר על-ידי Piotr Steininger, [@polishprince](https://twitter.com/polishprince)*
+*נוצר על ידי Piotr Steininger, [@polishprince](https://twitter.com/polishprince)*
 
-*עודכן על-ידי Ernesto Jimenez, [@ernesto_jimenez](https://twitter.com/ernesto_jimenez)*
+*עודכן על ידי Ernesto Jimenez, [@ernesto_jimenez](https://twitter.com/ernesto_jimenez)*
 
-**מדריך זה מניח שכבר בנית אפלקציית RailsGirls לפי ** [**מדריך בניית האפליקציה הראשונה שלך**](/app).
+**המדריך הזה מניח שכבר בנית האפליקציה לדוגמה של RailsGirls המתוארת ** [**במדריך לבניית אפליקציה**](/app).
 
 
 ## שלב 0: הוסיפי את ה-devise gem
 
-פתחי את קובץ ה-`Gemfile` והוסיפי לו את השורה הבאה
+פתחי את ה- `Gemfile` והוסיפי את השורה הבאה
 
 {% highlight ruby %}
 gem 'devise'
@@ -24,9 +24,9 @@ gem 'devise'
 {% highlight sh %}
 bundle install
 {% endhighlight %}
-כדי להתקין את ה-gem. **כמו כן, זכרי לאתחל את שרת ה-Rails.**.
+על מנת להתקין את ה- gem. **זכרי גם לאתחל את שרת ה- Rails**.
 
-## שלב 1: הרכיבי את devise לתוך האפליקציה
+## שלב 1: שלבי את devise באפליקציה שלך
 
 הריצי את הפקודה הבאה בטרמינל.
 
@@ -35,14 +35,15 @@ rails g devise:install
 {% endhighlight %}
 
 
-## שלב 2: הגדירי את Devise
+## שלב 2: התאימי את Devise
 
-ודאי שהגדרת את ה-URL הדיפולטיווי של האפליקציה בקובץ environment. פתחי את הקובץ `config/environments/development.rb` והוסיפי את השורה הזאת:
+וודאי שהגדרת את אופציית ברירת המחדל ל- url בקבצי הגדרת הסביבה. פתחי את הקובץ `config/environments/development.rb` והוסיפי את השורה הבאה:
+
 {% highlight ruby %}
    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 {% endhighlight %}
 
-לפני המילה `end`.
+לפני מילת המפתח `end`.
 
 פתחי את `app/views/layouts/application.html.erb` והוסיפי:
 
@@ -54,38 +55,38 @@ rails g devise:install
   <p class="alert alert-error"><%= alert %></p>
 <% end %>
 {% endhighlight %}
-שורה מעל
+ממש מעל
 {% highlight ruby %}
    <%= yield %>
 {% endhighlight %}
 
-לסיום, אם את מתכננת [להעלות ל-Heroku](/heroku) פתחי את `config/application.rb` והוסיפי את השורה הזו:
+לסיום, אם את מתכננת [להעלות את האפליקציה שלך לאינטרנט עם Heroku](/heroku) עלייך לפתוח את הקובץ `config/application.rb` ולהוסיף את השורה הבאה:
 {% highlight ruby %}
   config.assets.initialize_on_precompile = false
 {% endhighlight %}
-כשורה השלישית מהסוף (לפני הראשונה מבין שתי ה-`end`)
+כך שתהיה השורה השלישית מתחתית הקובץ (לפני מילת המפתח `end` הראשונה מבין השתיים)
 
-## שלב 3: בני את ה-user model
+## שלב 3: צרי את מודל המשתמש (User)
 
-נשתמש ב-generator שהגיע עם ה-gem כדי שיבנה לנו אוטומטית את ה-user model.
+אנו נשתמש בחבילת סקריפטים לשם יצירת מודל של משתמש.
 {% highlight sh %}
    rails g devise user
    rake db:migrate
 {% endhighlight %}
 
-**Coach:** הסבר/הסבירי את ה-user model שנוצר. מהם השדות שלו?
+**מדריך/ה:** הסבר/הסבירי איזה מודל משתמש (user model) נוצר. מהם השדות?
 
 ## שלב 4: צרי את המשתמש הראשון שלך
 
-כעת אחרי שהכנו את הכל, תוכלי ליצור את המשתמש הראשון. Devise יוצר את כל הקוד ואת ה-routes הנחוצים ליצירת חשבון, log in, log out וכו'.
+כעת, לאחר שערכת את כל הסידורים הנדרשים, תוכלי ליצור את המשתמש הראשון שלך. Devise יוצר את כל הקוד וההפניות הנדרשים ליצירת חשבונות משתמש, פרטי כניסה לאפליקציה ויציאה ממנה, וכולי.
 
-ודאי ששרת ה-Rails רץ לגלשי לכתובת [http://localhost:3000/users/sign_up](http://localhost:3000/users/sign_up) וצרי את חשבון המשתמש שלך.
+וודאי שהשרת רץ, פתחי את [http://localhost:3000/users/sign_up](http://localhost:3000/users/sign_up) וצרי את חשבון המשתמש שלך.
 
-## שלב 5: הוסיפי לינקים להרשמה וכניסה
+## שלב 5: הוסיפי קישורים להרשמה ולהתחברות
 
-כל מה שנצטרך לעשות עכשיו הוא להוסיף את הלינקים להרשמה או כניסה לאתר בפינת ב-Header של האתר או בתפריט הניווט. במידה והמשתמש כבר מחובר למערכת, נציג הודעה במתאימה במקום הלינקים האלו.
+כל שעלינו לעשות כעת זה להוסיף את הקישורים המתאים להתחברות - או הודעה שמהשתמש מחובר - בצד הימני העליון של סרגל הניווט.
 
-לשם כך, ערכי את `app/views/layouts/application.html.erb` והיספי:
+כדי לעשות זאת, ערכי את `app/views/layouts/application.html.erb` והוסיפי:
 {% highlight erb %}
 <p class="navbar-text pull-right">
 <% if user_signed_in? %>
@@ -97,7 +98,7 @@ rails g devise:install
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
 {% endhighlight %}
-מיד אחרי
+מייד לאחר
 {% highlight erb %}
 <ul class="nav">
   <li class="active"><a href="/ideas">Ideas</a></li>
@@ -105,15 +106,18 @@ rails g devise:install
 {% endhighlight %}
 
 
-פתחי את הדפדפן ונסי להכנס ולצאת מהאפליקציה.
+פתחי את הדפדפן שלך ונסי להתחבר לאפליקציה ולהתנתק ממנה.
 
-**Coach:** דבר/י על `user_signed_in?` ו- `current_user` helpers. למה הם משמשים?
+**מדריך/ה:** דבר/י על ההלפרים `user_signed_in?` ו- `current_user`. כיצד הם שימושיים?
 
 ## מה הלאה?
 
-* הוסיפי שדות נוספים ל-user model 
-* הוסיפי קשרים בין משתמשים ורעיונות
-* דאגי לכך שמשתמשים יוכלו לערוך רק את הרעיונות שלהם
-* השתמשי ב-roles ו-permissions (השתמשי באחד ה-gem-ים הפופולארים CanCan)
+* הוסיפי שדות למודל המשתמש
+
+* הוסיפי סוגי קשרים בין משתמשים ורעיונות
+
+* הגבילי משתמשים כך שיוכלו לערוך רק את הרעיונות שלהם
+
+* הוסיפי תפקידים והרשאות (השתמשי באחד מה- gems הפופולריים לניהול הרשאות, כגון CanCan)
 
 
