@@ -4,31 +4,29 @@ title: Guides
 permalink: guide
 ---
 
-# The How to Guide
+# מדריך ה"כיצד"
 
 
-## Hosting your first Rails Girls event
+## או איך מארגנים את ארוע Rails Girls הראשון
 
-Our aim is to give tools for women to understand technology. The Rails Girls events do this by providing a great first experience on building the Internet.
+המטרה שלנו - לתת לנשים כלים להבין טכנולוגיה. הארועים של Rails Girls זוהי הזדמנות מצויינת להתנסות בפעם הראשונה בבנייה ופיתוח לאינטרנט.
 
-Rails Girls was founded in end of 2010 in Helsinki. Originally intended as a onetime event, we never thought we'd see so many local chapters all around the world! This guide has been put together to help you get started.
+Rails Girls הראשון נערך בסוף 2010 בהלסינקי, ובמקור תוכנן כארוע חד פעמי. מעולם לא חשבנו שנראה סניפים מקומיים כה רבים נפתחים מסביב לעולם! המדריך הבא נועד לעזור לך להתחיל.
 
-If you want to organize an event, start by filling out [http://railsgirls.com/inyourcity](http://railsgirls.com/inyourcity) and someone from our team will be in contact
+אם הינך מעוניינת לארגן ארוע, ראשית מלאי את הטופס הבא [http://railsgirls.com/inyourcity](http://railsgirls.com/inyourcity) וחבר צוות שלנו יצור איתך קשר
 
-The roadmap for future events can be seen at [www.railsgirls.com](http://railsgirls.com).
-
-
-### The Basics
-Rails Girls events are non-profit. We don’t charge the participants and do not pay for coaches or speakers. Participants don’t need any previous knowledge about programming and there are no age-limitations. All the participants need is a laptop and some curiosity. 
+בקישור הבא ניתן לראות את הארועים המתוכננים לעתיד [www.railsgirls.com](http://railsgirls.com).
   
-The two-day event includes a lot of small group working and short focused talks on programming, design and web. No panel discussions or podium-talks - the spirit should be informal and hands-on. The more you can remove abstractions and add inclusivity the better.
+הארועים של Rails Girls אינם למטרות רווח. אנו לא גובים כסף מהמשתתפים, ולא משלמים למדריכים ומרצים. מהמשתתף לא נדרש ידע קודם בתכנות, ואין הגבלת גיל. כל מה שצריך - מחשב נייד וקצת סקרנות.
 
-#### Rails Girls philosophy
+ארוע בן יומיים יכלול הרבה עבודה בקבוצות קטנות, והרצאות קצרות וממוקדות בנושאי תכנות, עיצוב ואינטרנט. ללא דיוני פנל, וללא הרצאות במה - אווירה מעשית ובלתי פורמלית. פחות אבסטרקציה ויותר מעורבות.
 
-* Show sparks, personality and keep in mind the big picture. Explain, repeat and always tie what you're telling into a larger context.
-* Internet was made by people and it doesn’t break by a little tinkering. Continuously show the human side: encourage coaches to talk about open source communities, their programming idols and their aspirations.
-* Copy-pasting rules. Programming per se isn’t central - you can't really learn to speak Chinese in one day, in a similar manner you can only learn the basic vocabulary and expressions in coding. The goal of every event is to make something visible!
-* Girls run this world! But also women, ladies, even boys are allowed in. More than semantics we're interested in a mindset. Both founders were born in the Spice Girls era, they don't see the word girl as condescending or cutesy-cute.
+#### הפילוסופיה של Rails Girls
+
+* הראו התלהבות, אישיות והחזיקו בראש את התמונה הגדולה. הסבירו, חזרו ותמיד תציגו את ההקשר הרחב לדבריכם.
+* האינטרנט נבנה על ידי אנשים, וקצת חובבנות לא מזיקה הרבה. התמידו בהצגת הצד האנושי: עודדו את המדריכים לדבר על קהילות קוד פתוח, דמויות נערצות מעולם התכנות ושאיפות אישיות. 
+* חוקי העתק-הדבק. תכנות בפני עצמו לא עומד במרכז - ללמוד סינית ביום אחד זו משימה בלתי אפשרית. כנ"ל לגבי שפת תכנות. נתמקד באוצר מילים וביטויים בסיסיים לכתיבת קוד. המטרה שנגיע לתוצר!
+* זהו עולם של בנות! אך גם נשים, ואפילו בנים מוזמנים. שני המייסדים נולדו בעידן הספייס גירלז, ולא רואים במילה "בנות" התנשאות או חומד יתר. 
 
 ### Example Program
 
