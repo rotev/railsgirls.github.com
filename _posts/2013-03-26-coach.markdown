@@ -4,34 +4,41 @@ title: Guides
 permalink: coach
 ---
 
-# Being a Rails Girls coach
+# להיות מדריך של Rails Girls
 
-*All your basic questions answered in one place*
+*כל התשובות לשאלותיך במקום אחד*
 
-### What do I need to be a Rails Girls coach?
+### מה צריך בשביל להיות מדריך של Rails Girls?
 
-So, you've heard about [Rails Girls](http://railsgirls.com) and are wondering if you've got what it takes to be a coach at one of the workshops? That's awesome! Your interest in helping beginners dip their toes into web programming is already a great prerequisite! What else do you need?
+אז שמעת על [Rails Girls](http://railsgirls.com) ותהית מה עושים בשביל להיות מדריך באחת הסדנאות? מצויין! הרצון לעזור למתחילים לעשות את צעדיהם הראשונים בתכנות לאינטרנט, הוא כבר התחלה טובה! מה עוד צריך?
 
-- Patience, willingness to help, and a friendly attitude :)
-- Being able to answer all sorts of questions in a beginner friendly way (even if the explanation isn't *technically* completely exact) throughout the duration of the workshop.
-- Experience with web programming (you know what MVC means, right?), not necessarily in Rails.
-- Some time to go through the [basic app tutorial][app] before the event.
+- סבלנות, רצון לעזור, וגישה ידידותית :)
+- נכונות לענות על כל סוגי השאלות בצורה ידידותית למתחילים, במהלך הסדנה. אפילו אם ההסבר *טכנית* לא מדוייק.
+- נסיון עם תכנות לאינטרנט (את יודעת מה זה MVC, נכון?), לאו דווקא ב-Rails.
+- קצת זמן, כדי לעבור לפני הסדנה על [מדריך לאפליקציה הראשונה][app].
 
-### Why should I be a Rails Girls coach?
+### למה כדאי להיות מדריך של Rails Girls?
 
-You mean besides incredibly good karma? Here are some very likely outcomes:
+הכוונה, חוץ מקרמה יוצאת מן הכלל? הנה כמה סיבות טובות:
 
-- You'll meet interesting new people outside your usual developer group.
-- You'll probably learn something new by answering questions you never thought of asking yourself.
-- Eternal gratitude from your group of girls and the Rails Girls community.
-- An epic [\#FridayHug](http://fridayhug.com) like you've never seen before.
-- You'll help break down stereotypes about women not being interested in technology and programming and thus help your sisters, female friends and relatives, (future) daughters have more choices in their future. And you can add all that on your CV!
-
-### Choice of technology
-Rails Girls workshops give the first experience in software craftsmanship through introducing the participants to Ruby, Rails and HTML/CSS. The curriculum has been built around these technologies. If the workshop is too difficult or deep, it will not encourage the beginners to continue as it's perceived too hard. Rails Girls workshops are not about learning programming fast and efficiently. It's about the open environment, excitement and getting to know the tools they can use, and having a great day learning about programming, the community, web apps and more. We would love to see other additions to e.g.follow up meetups. If you'd like to host a beginner-friendly, welcome event for women in other technologies or frameworks, we strongly encourage you to do so and use the existing materials. All Rails Girls content is licensed under creative commons.
+- לפגוש אנשים מעניינם חדשים, מחוץ למעגל מפתחים הרגיל שלך.&nbsp;
+- ללמוד משהו חדש, על ידי מענה לשאלות שלעולם לא חשבת לשאול את עצמך.&nbsp;
+- הכרת תודה נצחית מקבוצת הבנות שלך, וקהילת Rails Girls.
+- [\#חיבוקשישי](http://fridayhug.com) אפי, כמו שלא ראית מעולם.
+- לתרום לשבירת סטיגמות על שנשים לא מתעניינות בטכנולוגיה ותכנות. לעזור לאחיות, נשים, חברות, קרובות משפחה ובנות שיקבלו יותר אפשרויות בחירה בעתיד. וכל זאת תוספת לא רעה לקורות חיים!
 
 
-### Time to complete app
+### בחירת הטכנולוגיה
+
+הסדנאות של Rails Girls מאפשרות להתנסות לראשונה במלאכת התוכנה ע"י חשיפת המשתתפים ל-Ruby, Rails ו-HTML/CSS. תוכנית הלימודים בנויה על הטכנולוגיות הנ"ל. סדנה מורכבת או עמוקה, לא תתרום לעדוד של מתחילים להמשיך. ותתפש כקשה מדי. סדנת Rails Girls לא בא ללמד לתכנת מהר או יעיל. אלא להציג סביבה פתוחה, מרגשת וכלים שעומדים לרשותך. להנות מיום לימודים על תכנות, קהילה, ווב-אפליקציות וכו'. אנחנו נשמח לראות תוספות, כמו מפגשי המשך. אם תרצו לארח אורע ידידותי לנשים מתחילות בטכנולוגיות או שפות אחרים, אנחנו מעודדים זאת גם, ושימוש בחומרים הקיימים. 
+כל התוכן של Rails Girls נמצא תחת רשיון [creative commons](http://he.wikipedia.org/wiki/Creative_Commons).
+
+### מסגרת הזמן לבניית אפליקציה
+
+יש מלא זמן לכתיבת האפליקציה, לכן חשוב לעבור לאט-לאט ולהסביר מה קורה בכל שלב. לרוב זו עבודת העתק-הדבק ואם המשתתפות ירוצו על המדריך, הן יסיימו במהרה אך לא יבינו מה קרה.<br>
+הקצנו המון זמן (4-5 שעות) לאפליקציה, שחקו איתה, העלו אותה לשרת כדי שאחרים יוכלו לראות, בלי לחץ :)
+
+
 There's loads of time to complete the app, and so it is more important to slowly explain what is happening in each step, as it is a lot of copy pasting and if attendees rush through the guide, they will be done soon but not understand at all what happened. 
 <br> There's a LOT (4-5) h reserved for the app, tweaking it and putting it online for others to see so there is no hurry :) 
 
