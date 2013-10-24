@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Show thumbnails when listing ideas
+title: הציגו thumbnails לרשימת הרעיונות
 permalink: thumbnails
 ---
 
