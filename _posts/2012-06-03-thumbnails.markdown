@@ -4,59 +4,54 @@ title: Show thumbnails when listing ideas
 permalink: thumbnails
 ---
 
-# Create thumbnails with Carrierwave
+# צרי Thumbnails עם Carrierwave
 
-*Created by Miha Filej, [@mfilej](https://twitter.com/mfilej)*
+*נוצר ע"י Miha Filej, [@mfilej](https://twitter.com/mfilej)*
 
-__Coach__: Explain what specifying the image width in HTML at the end of Step
-4 does and how it differs from resizing images on the server.
+__מדריך__: הסבר מה קורה כאשר מגדירים רוחב לתמונה ב-HTML בסוף שלב 4, ומה ההבדל בין זה לבין resize של התמונה על השרת.
 
-## Installing ImageMagick
+## התקנת ImageMagick
 
-* OS X: run `brew install imagemagick`. If you don't have the brew command, you can [install Homebrew here][in-homebrew].
-* Windows: download and run the [ImageMagick installer][im-win] (use the first
-  *download* link).
-* Linux: On Ubuntu and Debian, run `sudo apt-get install imagemagick`. Use the
-  appropriate package manager instead of `apt-get` for other distributions.
+* OS X: הריצי את הפקודה `brew install imagemagick`. אם פקודת ה-brew אינה מותקנת אצלך, את יכולה [להתקין HomeBrew כאן][in-homebrew].
+* Windows: הורידי והריצי את ה-[ImageMagick installer][im-win] (השתמשי בלינק *download* הראשון).
+* Linux: ב-Ubuntu ו-Debian, הריצי `sudo apt-get install imagemagick`. השתמשי ב-package manager המתאים במקום `apt-get` עבור הפצות אחרות.
 
   [im-win]: http://www.imagemagick.org/script/binary-releases.php?ImageMagick=vkv0r0at8sjl5qo91788rtuvs3#windows
   [in-homebrew]: http://mxcl.github.io/homebrew/
 
-__Coach__: What is ImageMagick and how is it different from libraries/gems we
-used before?
+__מדריך__: מה זה ImageMagick ואיך זה שונה מספריות/ג'מים שהשתמשנו בהם קודם?
 
-Open `Gemfile` in the project and add
+פתחי את `Gemfile` בפרוייקט והוסיפי לו:
 
 {% highlight ruby %}
 gem 'mini_magick', '3.5.0'
 {% endhighlight %}
 
-under the line
+מתחת לשורה:
 
 {% highlight ruby %}
 gem 'carrierwave'
 {% endhighlight %}
 
-In the Terminal run:
+בטרמיניל הריצי:
 
 {% highlight sh %}
 bundle
 {% endhighlight %}
 
-## Telling our app to create thumbnails when an image is uploaded
+## אמרי לאפליקציה שלך ליצור thumbnails כשמעלים תמונה
 
-Open `app/uploaders/picture_uploader.rb` and find the line that looks like
-this:
+פתחי את `app/uploaders/picture_uploader.rb` ומצאי את השורה שנראית ככה:
 
 {% highlight ruby %}
   # include CarrierWave::MiniMagick
 {% endhighlight %}
 
-Remove the `#` sign.
+הסירי את סימן ה `#`.
 
-__Coach__: Explain the concept of comments in code.
+__מדריך__: הסבר את הקונספט של הערות בקוד.
 
-Below the line you just changed, add:
+מתחת לשורה שהרגע שינית, הוסיפי:
 
 {% highlight ruby %}
 version :thumb do
@@ -64,23 +59,21 @@ version :thumb do
 end
 {% endhighlight %}
 
-The images uploaded from now on should be resized, but the ones we already
-have weren't affected. So edit one of the existing ideas and re-add a picture.
+התמונות שנעלה מעכשיו אמורות לעבור resize, אבל אלה שכבר העלנו לא השתנו.
+אז ערכי את אחד הרעיונות הקיימים והוסיפי מחדש את התמונה שלו.
 
-## Displaying the thumbnails
+## הצגת ה-thumbnails
 
-To see if the uploaded picture was resized open
-`app/views/ideas/index.html.erb`. Change the line 
+כדי לראות אם התמונה שהועלתה אכן עברה resize פתחי את `app/views/ideas/index.html.erb`. שני את השורה:
 
 {% highlight erb %}
 <td><%= idea.picture %></td>
 {% endhighlight %}
 
-to
+ל-
 
 {% highlight erb %}
 <td><%= image_tag idea.picture_url(:thumb) if idea.picture? %></td>
 {% endhighlight %}
 
-Take a look at the list of ideas in the browser to see if the thumbnail is
-there.
+הסתכלי ברשימת הרעיונות בדפדפן כדי לראות אם ה-thumbnail באמת נמצא שם.

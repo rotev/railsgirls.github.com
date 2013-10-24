@@ -63,8 +63,6 @@ gem update rails --no-ri --no-rdoc
 
 נדרשת התקנה של Git ושל SSH-keys אם ברצונך [לאחסן את האפליקציה ב- Heroku](/heroku).
 
-Installation of Git and SSH-keys is required if you want to [put your app online with Heroku](/heroku).
-
 **שלב אחרון.** את תזדקקי גם לעורך טקסט על מנת לערוך קבצי קוד. אנו ממליצות על Sublime Text.
 
 * [הורידי את Sublime Text והתקיני אותו](http://www.sublimetext.com/2)
