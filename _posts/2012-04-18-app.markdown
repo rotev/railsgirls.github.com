@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Rails Girls App Tutorial
+title: מדריך Rails Girls לבניית אפליקציה
 permalink: app
 ---
 
@@ -30,6 +30,9 @@ permalink: app
 
 </div>
 
+### חשוב!
+
+חשוב שתבחרי בהוראות המתאימות למערכת ההפעלה שלך - ההוראות שאת צריכה להריץ על Windows מעט שונות מאלו של Mac או Linux. אם את נתקלת בבעיות, בדקי את בלינקים שמתחת לכל סט של הוראות, אלו משנים את ההוראות הכתובות בהתאם למערכת ההפעלה שנבחרה.
 
 ## *1.*יצירת האפליקציה
 
@@ -47,9 +50,37 @@ permalink: app
   <div class="nix">
 {% highlight sh %}
 mkdir projects
+{% endhighlight %}
+
+    <div>
+את יכולה לוודא שתיקייה בשם <code>projects</code> אכן נוצרה ע"י הרצת הפקודה: <code>ls</code>. את אמורה לראות את תיקיית ה-<code>projects</code> ב-output. עכשיו את רוצה לשנות את התיקייה שבה את נמצאת כרגע לתיקיית ה-<code>projects</code> ע"י הרצת הפקודה:
+    </div>
+
+{% highlight sh %}
 cd projects
+{% endhighlight %}
+
+    <div>
+תוכלי לוודא שאת נמצאת עכשיו בתיקייה ריקה או שוב ע"י שימוש בפקודה <code>ls</code>. עכשיו את רוצה ליצור אפליקצייה חדשה בשם <code>railsgirls</code> ע"י הרצת הפקודה:      
+    </div>
+
+{% highlight sh %}
 rails new railsgirls
+{% endhighlight %}
+
+    <div>
+זה יצור אפליקציה חדשה בתוך התיקייה <code>railsgirls</code>, ולכן שוב נרצה לשנות את התיקייה הנוכחית להיות בתוך אפליקציית ה-Rails שלנות, ע"י הרצת:
+    </div>
+
+{% highlight sh %}
 cd railsgirls
+{% endhighlight %}
+
+    <div>
+אם תריצי את הפקודה <code>ls</code> בתוך התיקייה את תראי תיקיות כדוגמת <code>app</code> ו-<code>config</code>. את יכולה להפעיל את שרת ה-rails ע"י הרצת:
+    </div>      
+
+{% highlight sh %}
 rails server
 {% endhighlight %}
   </div>
@@ -57,15 +88,63 @@ rails server
   <div class="win">
 {% highlight sh %}
 mkdir projects
+{% endhighlight %}
+
+    <div>
+את יכולה לוודא שתיקייה בשם <code>projects</code> אכן נוצרה ע"י הרצת הפקודה: <code>dir</code>. את אמורה לראות את תיקיית ה-<code>projects</code> ב-output. עכשיו את רוצה לשנות את התיקייה שבה את נמצאת כרגע לתיקיית ה-<code>projects</code> ע"י הרצת הפקודה:
+    </div>
+
+{% highlight sh %}
 cd projects
+{% endhighlight %}
+
+    <div>
+תוכלי לוודא שאת נמצאת עכשיו בתיקייה ריקה או שוב ע"י שימוש בפקודה <code>dir</code>. עכשיו את רוצה ליצור אפליקצייה חדשה בשם <code>railsgirls</code> ע"י הרצת הפקודה:      
+    </div>
+
+{% highlight sh %}
 rails new railsgirls
+{% endhighlight %}
+
+    <div>
+זה יצור אפליקציה חדשה בתוך התיקייה <code>railsgirls</code>, ולכן שוב נרצה לשנות את התיקייה הנוכחית להיות בתוך אפליקציית ה-Rails שלנות, ע"י הרצת:
+    </div>
+
+{% highlight sh %}
 cd railsgirls
-ruby script\rails server
+{% endhighlight %}
+
+    <div>
+אם תריצי את הפקודה <code>ls</code> בתוך התיקייה את תראי תיקיות כדוגמת <code>app</code> ו-<code>config</code>. את יכולה להפעיל את שרת ה-rails ע"י הרצת:
+    </div>  
+
+{% highlight sh %}
+ruby bin\rails server
+{% endhighlight %}
+
+  </div>
+</div>
+
+**משתמשות Windows:** יתכן ותצטרכי להחליף את `bin\rails` עם `script\rails` או פשוט לכתוב `rails server` במקום כל הפקודה, תלוי בגירסת ה-Rails שמותקנת אצלך.
+
+פתחי את הדפדפן שלך וגילשי לכתובת [http://localhost:3000](http://localhost:3000). את אמורה לראות עמוד "Welcome aboard", שאומר שיצירת האפליקציה פעלה כראוי.
+
+שימי לב כי בחלון הזה האופציה להרצת פקודה אינה נראית, מכיוון שאת נמצאת כעת בתוך שרת ה-Rails. כשאפשר להריץ פקודות, הטרמינל אמור להראות כך:
+
+<div class="os-specific">
+  <div class="nix">
+{% highlight sh %}
+$
+{% endhighlight %}
+  </div>
+  <div class="win">
+{% highlight sh %}
+>
 {% endhighlight %}
   </div>
 </div>
 
-פתחי את הדפדפן שלך וגילשי לכתובת [http://localhost:3000](http://localhost:3000). את אמורה לראות עמוד "Welcome aboard", שאומר שיצירת האפליקציה פעלה כראוי.
+זה נקרא "command prompt". כשה-command prompt אינו נראה אינך יכולה להריץ פקודות חדשות. אם תנסי להריץ את הפקודה `cd` או כל פקודה אחרת, זה לא יעבוד. על מנת לחזור ל-command prompt הרגיל:
 
 לחצי `CTRL-C` בטרמינל כדי לכבות את השרת.
 
@@ -82,6 +161,21 @@ ruby script\rails server
   <div class="nix">
 {% highlight sh %}
 rails generate scaffold idea name:string description:text picture:string
+{% endhighlight %}
+  </div>
+
+  <div class="win">
+{% highlight sh %}
+rails generate scaffold idea name:string description:text picture:string
+{% endhighlight %}
+  </div>
+</div>
+
+ה-scaffold מייצר קבצים חדשים בתיקיית הפרוייקט שלך, אבל כדי לגרום לזה לעבוד כמו שצריך אנחנו צריכים להריץ כמה פקודות נוספות כדי לעדכן את ה-database שלנו ולאתחל את השרת.
+
+<div class="os-specific">
+  <div class="nix">
+{% highlight sh %}
 rake db:migrate
 rails server
 {% endhighlight %}
@@ -89,9 +183,8 @@ rails server
 
   <div class="win">
 {% highlight sh %}
-rails generate scaffold idea name:string description:text picture:string
 rake db:migrate
-ruby script\rails server
+ruby bin\rails server
 {% endhighlight %}
   </div>
 </div>
@@ -196,13 +289,17 @@ gem 'carrierwave'
 bundle
 {% endhighlight %}
 
-בשלב זה עליך **לאתחל את שרת ה-Rails** בטרמינל. זה נחוץ על מנת שהאפליקציה תטען את הספרייה שהתווספה.
-
 כעת אנחנו יכולים לג'נרט את הקוד שמטפל בהעלאות. בטרמינל הריצי:
 
 {% highlight sh %}
 rails generate uploader Picture
 {% endhighlight %}
+
+בשלב זה עליך **לאתחל את שרת ה-Rails** בטרמינל. 
+
+לחצי על CTRL-C בטרמינל כדי לכבות את השרת. ברגע שהוא הפסיק, את יכולה ללחוץ על חץ למעלה כדי לקבל את הפקודה האחרונה שהכנסת, ואז ללחוץ enter כדי להפעיל את השרת שוב.
+
+זה נחוץ על מנת שהאפליקציה תטען את הספרייה שהתווספה.
 
 פתחי את הקובץ `app/models/idea.rb` ומתחת לשורה
 
@@ -259,7 +356,27 @@ root :to => redirect('/ideas')
 
 בדקי את השינוי ע"י גלישה לכתובת הראשית בדפדפן שלך.
 
-**מדריך/ה:** דבר/י על routes.
+**מדריך/ה:** דבר/י על routes, כולל פרטים על סדר ה-routes והקשר שלהם לקבצים סטטיים.
+
+***משתמשות Rails 3:*** תצטרכו למחוק את הקובץ index.html מתיקיית ה-`/public/` כדי שזה יעבוד.
+
+## הוסיפי עמודים סטטיים לאפליקציה שלך
+
+בואי נוסיף עמודים סטטיים לאפליקציה שלנו שיכילו מידע על יוצרת האפליקציה - את!
+
+{% highlight sh %}
+rails generate controller pages info
+{% endhighlight %}
+
+הפקודה הזאת תיצור תיקיה חדשה תחת `/views` שנקראת `/pages` ומתחת לזה קובץ שנקרא `info.html.erb` שהוא יהיה עמוד המידע שלך.
+
+זה מוסיף גם route פשוט חדש ל-routes.rb.
+
+{% highlight ruby %}
+get "pages/info"
+{% endhighlight %}
+
+כעת את יכולה לפתוח את הקובץ `/views/pages/info.html.erb` ולהוסיף מידע אודותיך ב-HTML ואז לגלוש לכתובת [http://localhost:3000/pages/info](http://localhost:3000/pages/info) בדפדפן שלך כדי לראות את עמוד המידע החדש שלך.
 
 
 ## מה הלאה?
