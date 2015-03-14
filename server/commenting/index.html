@@ -1,0 +1,147 @@
+<!doctype html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>הוספת תגובות לאפליקציית Rails Girls - Rails Girls</title>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/js/prefixfree.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/guides.js"></script>
+    <link href="/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="/css/bootstrap-responsive.rtl.css" rel="stylesheet" />
+    <link href="/css/code.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/style.rtl.css" rel="stylesheet" />
+    <link href="/favicon.png" rel="shortcut icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="span3" href="/" id="logo">
+          <img alt="Rails Girls Guides" src="/images/railsgirls-guides.png" />
+        </a>
+        <nav></nav>
+      </div>
+    </header>
+    <article class="container">
+      <div class="span10">
+        <h1 id='__rails_girls'>תגובות לאפליקציית Rails Girls</h1>
+
+<p><em>מאת Janika Liiv, <a href='https://twitter.com/janikaliiv'>@janikaliiv</a></em></p>
+
+<p>אנחנו הולכות להוסיף את האפשרות להגיב לרעיונות באפליקציית ה-<em>railsgirls</em> שלך.</p>
+
+<p>ניתן למצוא את הוראות ההתקנה ובניית אפליקציית הרעיונות <a href='/app'>כאן</a>.</p>
+
+<h2 id='_1___foreigner_gem'>שלב 1: הוסיפי את ה-foreigner gem</h2>
+
+<p>הוסיפי לקובץ ה-Gemfile</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>gem</span> <span class='s1'>&#39;foreigner&#39;</span>
+</code></pre></div>
+<p>בטרמינל שלך הפסיקי את השרת אם הוא רץ כרגע, והקלידי</p>
+<div class='highlight'><pre><code class='sh'>bundle install
+</code></pre></div>
+<h2 id='_2____'>שלב 2: צרי את שלד התגובה</h2>
+
+<p>צרי את שלד התגובה עם שם המגיב, גוף התגובה (התוכן) ועם הפניה (reference) לטבלת הרעיונות (idea_id).</p>
+<div class='highlight'><pre><code class='sh'>rails g scaffold comment user_name:string body:text idea_id:integer
+</code></pre></div>
+<h2 id='_3__foreign_key'>שלב 3: הוסיפי foreign key</h2>
+
+<p>הוסיפי למיגרציה את ה-foreign key. מתיקיית db/migrate פתחי את הקובץ שמסתיים ב-&#8216;create_comments.rb&#8217;. לאחר</p>
+<div class='highlight'><pre><code class='ruby'>	<span class='n'>t</span><span class='o'>.</span><span class='n'>timestamps</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>הוסיפי</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>add_foreign_key</span> <span class='ss'>:comments</span><span class='p'>,</span> <span class='ss'>:ideas</span>
+</code></pre></div>
+<p>כעת, הריצי את המיגרציה על מנת לעדכן את השינויים ב-database באמצעות הפקודה</p>
+<div class='highlight'><pre><code class='sh'>rake db:migrate
+</code></pre></div>
+<p>הפעילי את השרת באמצעות:</p>
+<div class='highlight'><pre><code class='sh'>rails s
+</code></pre></div>
+<h2 id='_4__relations___'>שלב 4: הוסיפי relations (קשרים) למודל התגובה</h2>
+
+<p>את צריכה לוודא ש-Rails מבין את הקשר בין האובייקטים רעיון ותגובה. מאחר ורעיון בודד יכול להכיל תגובות רבות, אנחנו צריכים לוודא שמודל הרעיון יודע את זה. פתחי את app/models/idea.rb ולאחר השורה</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>Idea</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+</code></pre></div>
+<p>הוסיפי</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>has_many</span> <span class='ss'>:comments</span>
+</code></pre></div>
+<p>גם מודל התגובה צריך לדעת שהוא משוייך לרעיון. פתחי את app/models/comment.rb ולאחר</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>Comment</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+</code></pre></div>
+<p>הוסיפי את השורה</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>belongs_to</span> <span class='ss'>:idea</span>
+</code></pre></div>
+<h2 id='_5__________'>שלב 5: הדפיסי למסך את טופס הוספת התגובה ואת רשימת התגובות הקיימות</h2>
+
+<p>פתחי את app/views/ideas/show.html ואחרי ה-image_tag</p>
+
+<p><div class='highlight'><pre><code class='erb'><span class='cp'>&lt;%=</span> <span class='n'>image_tag</span><span class='p'>(</span><span class='vi'>@idea</span><span class='o'>.</span><span class='n'>picture_url</span><span class='p'>,</span> <span class='ss'>:width</span> <span class='o'>=&gt;</span> <span class='mi'>600</span><span class='p'>)</span> <span class='k'>if</span> <span class='vi'>@idea</span><span class='o'>.</span><span class='n'>picture</span><span class='o'>.</span><span class='n'>present?</span> <span class='cp'>%&gt;</span><span class='x' />
+</code></pre></div></p>
+
+<p>הוסיפי</p>
+<div class='highlight'><pre><code class='erb'><span class='x'>&lt;h3&gt;Comments&lt;/h3&gt;</span>
+<span class='cp'>&lt;%</span> <span class='vi'>@idea</span><span class='o'>.</span><span class='n'>comments</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>comment</span><span class='o'>|</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>  &lt;div&gt;</span>
+<span class='x'>    &lt;strong&gt;</span><span class='cp'>&lt;%=</span> <span class='n'>comment</span><span class='o'>.</span><span class='n'>user_name</span> <span class='cp'>%&gt;</span><span class='x'>&lt;/strong&gt;</span>
+<span class='x'>    &lt;br /&gt;</span>
+<span class='x'>    &lt;p&gt;</span><span class='cp'>&lt;%=</span> <span class='n'>comment</span><span class='o'>.</span><span class='n'>body</span> <span class='cp'>%&gt;</span><span class='x'>&lt;/p&gt;</span>
+<span class='x'>  &lt;/div&gt;</span>
+<span class='cp'>&lt;%</span> <span class='k'>end</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='cp'>&lt;%=</span> <span class='n'>render</span> <span class='s1'>&#39;comments/form&#39;</span> <span class='cp'>%&gt;</span><span class='x' />
+</code></pre></div>
+<p>בקובץ app/controllers/ideas_controller.rb הוסיפי בפעולת ה-show אחרי השורה</p>
+
+<p><div class='highlight'><pre><code class='ruby'><span class='vi'>@idea</span> <span class='o'>=</span> <span class='no'>Idea</span><span class='o'>.</span><span class='n'>find</span><span class='p'>(</span><span class='n'>params</span><span class='o'>[</span><span class='ss'>:id</span><span class='o'>]</span><span class='p'>)</span>
+</code></pre></div></p>
+
+<p>את</p>
+
+<p><div class='highlight'><pre><code class='ruby'><span class='vi'>@comment</span> <span class='o'>=</span> <span class='vi'>@idea</span><span class='o'>.</span><span class='n'>comments</span><span class='o'>.</span><span class='n'>build</span>
+</code></pre></div></p>
+
+<p>פתחי את הקובץ app/views/comments/_form.html ולאחר</p>
+<div class='highlight'><pre><code class='erb'><span class='x'>  &lt;div class=&quot;field&quot;&gt;</span>
+<span class='x'>    </span><span class='cp'>&lt;%=</span> <span class='n'>f</span><span class='o'>.</span><span class='n'>label</span> <span class='ss'>:body</span> <span class='cp'>%&gt;</span><span class='x'>&lt;br /&gt;</span>
+<span class='x'>    </span><span class='cp'>&lt;%=</span> <span class='n'>f</span><span class='o'>.</span><span class='n'>text_area</span> <span class='ss'>:body</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>  &lt;/div&gt;</span>
+</code></pre></div>
+<p>הוסיפי את השורה</p>
+<div class='highlight'><pre><code class='erb'><span class='cp'>&lt;%=</span> <span class='n'>f</span><span class='o'>.</span><span class='n'>hidden_field</span> <span class='ss'>:idea_id</span> <span class='cp'>%&gt;</span><span class='x' />
+</code></pre></div>
+<p>זהו! כעת צפי ברעיון שהוספת לאפליקצייה שלך ושם תוכלי לראות את טופס הוספת התגובה.</p>
+      </div>
+    </article>
+    <footer>
+      <p>
+        החומר באתר זה נמצא תחת רישיון
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>
+      </p>
+      <p>
+        <a href="http://railsgirls.com">Rails Girls</a>
+        &middot; מוגש בהתרגשות מהלסינקי, פינלנד &middot; עקבו אחרינו ב-<a href="http://twitter.com/railsgirls">Twitter</a>
+        ו-<a href="https://www.facebook.com/railsgirls">Facebook</a>
+      </p>
+    </footer>
+    <script type="text/javascript">
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-19631067-3"]);
+        _gaq.push(["_trackPageview"]);
+
+        (function() {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

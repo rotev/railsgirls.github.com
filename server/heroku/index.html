@@ -1,0 +1,148 @@
+<!doctype html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Rails Girls on Heroku - Rails Girls</title>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/js/prefixfree.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/guides.js"></script>
+    <link href="/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="/css/bootstrap-responsive.rtl.css" rel="stylesheet" />
+    <link href="/css/code.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/style.rtl.css" rel="stylesheet" />
+    <link href="/favicon.png" rel="shortcut icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="span3" href="/" id="logo">
+          <img alt="Rails Girls Guides" src="/images/railsgirls-guides.png" />
+        </a>
+        <nav></nav>
+      </div>
+    </header>
+    <article class="container">
+      <div class="span10">
+        <h1 id='______heroku'>העלי את האפליקציה שלך לאינטרנט עם Heroku</h1>
+
+<p><em>נוצר על-ידי Terence Lee, <a href='https://twitter.com/hone02'>@hone02</a></em></p>
+
+<h3 id='__heroku'>התקיני את Heroku</h3>
+
+<p>עקבי אחר השלבים 1 עד 3 ב<a href='https://devcenter.heroku.com/articles/quickstart'>מדריך המהיר</a> להרשמה, התקנת ה-toolbet ו-login.</p>
+
+<p><strong>מדריך/ה</strong>: דבר/י על היתרונות בהעלאה ל-Heroku לעומת שרתים מסורתיים.</p>
+
+<h3 id='___'>הכיני את האפליקציה שלך</h3>
+
+<h4 id='___'>עדכון בסיסי הנתונים שלנו</h4>
+
+<p>ראשית, עלינו לגרום לבסיס הנתונים לעבוד על Heroku, שמשתמש בבסיס נתונים שונה. שני בבקשה את השורה הבאה ב-Gemfile:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>gem</span> <span class='s1'>&#39;sqlite3&#39;</span>
+</code></pre></div>
+<p>ל-</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>group</span> <span class='ss'>:development</span> <span class='k'>do</span>
+  <span class='n'>gem</span> <span class='s1'>&#39;sqlite3&#39;</span>
+<span class='k'>end</span>
+<span class='n'>group</span> <span class='ss'>:production</span> <span class='k'>do</span>
+  <span class='n'>gem</span> <span class='s1'>&#39;pg&#39;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>הריצי <code>bundle install --without production</code> כדי להתקין את ה-dependencies (התוכנות הנדרשות לשם הרצת בסיס הנתונים החדש).</p>
+
+<p><strong>מדריך/ה</strong>: תוכל/י לדבר על RDBMS ועל אלו שקיימים היום.</p>
+
+<h4 id='_rails_12factor'>הוספת rails_12factor</h4>
+
+<p>כעת, עלינו להוסיף את rails_12factor ל- Gemfile שלנו כדי להפוך את האפליקציה שלנו לזמינה ב- Heroku. אנא שני את החלק הבא ב- Gemfile:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>group</span> <span class='ss'>:production</span> <span class='k'>do</span>
+  <span class='n'>gem</span> <span class='s1'>&#39;pg&#39;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>ל-</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>group</span> <span class='ss'>:production</span> <span class='k'>do</span>
+  <span class='n'>gem</span> <span class='s1'>&#39;pg&#39;</span>
+  <span class='n'>gem</span> <span class='s1'>&#39;rails_12factor&#39;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p><strong>מדריך/ה</strong>: תוכל/י לדבר על logging ב- Heroku.</p>
+
+<h4 id='__'>כלי ניהול גרסאות</h4>
+
+<p>עלינו להוסיף את הקוד שלנו לכלי ניהול גרסאות. תוכלי לעשות זאת על ידי הרצת הפקודות הבאות בטרמינל:</p>
+<div class='highlight'><pre><code class='sh'>git init
+git add .
+git commit -m <span class='s2'>&quot;initial commit&quot;</span>
+</code></pre></div>
+<p><strong>מדריך/ה</strong>: זהו זמן טוב לדבר על כלים לניהול גרסאות ועל git.</p>
+
+<h3 id='____deployment'>פרסי את האפליקציה שלך (Deployment)</h3>
+
+<h4 id='_'>יצירת האפליקציה</h4>
+
+<p>עלינו ליצור את אפליקציית heroku על ידי כך שנכתוב <code>heroku create</code> בטרמינל ונראה משהו בסגנון הזה:</p>
+<div class='highlight'><pre><code class='sh'>Creating evening-sky-7498... <span class='k'>done</span>, stack is cedar
+http://evening-sky-7498.herokuapp.com/ | git@heroku.com:evening-sky-7498.git
+Git remote heroku added
+</code></pre></div>
+<p>במקרה זה, &#8220;evening-sky-7498&#8221; הוא שם האפליקציה שלך.</p>
+
+<h4 id='__push'>דחיפת הקוד (Push)</h4>
+
+<p>כעת עלינו לדחוף את הקוד שלנו ל- heroku על ידי כתיבת <code>git push heroku master</code>. את תראי את פלט פקודת ה- push באופן הבא:</p>
+<div class='highlight'><pre><code class='sh'>Counting objects: 134, <span class='k'>done</span>.
+Delta compression using up to 4 threads.
+Compressing objects: 100% <span class='o'>(</span>115/115<span class='o'>)</span>, <span class='k'>done</span>.
+Writing objects: 100% <span class='o'>(</span>134/134<span class='o'>)</span>, 35.29 KiB, <span class='k'>done</span>.
+Total 134 <span class='o'>(</span>delta 26<span class='o'>)</span>, reused 0 <span class='o'>(</span>delta 0<span class='o'>)</span>
+
+-----&gt; Heroku receiving push
+-----&gt; Ruby/Rails app detected
+-----&gt; Installing dependencies using Bundler version 1.1.2
+       Running: bundle install --without development:test --path vendor/bundle --binstubs bin/ --deployment
+       Fetching gem metadata from https://rubygems.org/.......
+...
+-----&gt; Launching... <span class='k'>done</span>, v4
+       http://evening-sky-7498.herokuapp.com deployed to Heroku
+</code></pre></div>
+<p>תדעי שדחיפת הקוד הסתיימה כאשר תראי את הטקסט &#8220;Launching&#8230;&#8221; כמו בדוגמה לעיל.</p>
+
+<h4 id='____database_migrate'>להגר את בסיס הנתונים (Database migrate)</h4>
+
+<p>בשלב הבא עלינו להגר את בסיס הנתונים כפי שעשינו באופן מקומי במהלך הסדנה: <code>heroku run rake db:migrate</code></p>
+
+<p>כאשר הפקודה הזו מסיימת לרוץ, תוכלי גשת אל האפליקציה המבוססת דרך ה- url. עבור האפליקציה שבדוגמה הזו, תוכלי לגשת אל <a href='http://evening-sky-7498.herokuapp.com'>http://evening-sky-7498.herokuapp.com</a>. תוכלי גם לכתוב <code>heroku open</code> בטרמינל כדי להגיע אל הדף.</p>
+      </div>
+    </article>
+    <footer>
+      <p>
+        החומר באתר זה נמצא תחת רישיון
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>
+      </p>
+      <p>
+        <a href="http://railsgirls.com">Rails Girls</a>
+        &middot; מוגש בהתרגשות מהלסינקי, פינלנד &middot; עקבו אחרינו ב-<a href="http://twitter.com/railsgirls">Twitter</a>
+        ו-<a href="https://www.facebook.com/railsgirls">Facebook</a>
+      </p>
+    </footer>
+    <script type="text/javascript">
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-19631067-3"]);
+        _gaq.push(["_trackPageview"]);
+
+        (function() {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

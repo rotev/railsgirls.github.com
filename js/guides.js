@@ -6,10 +6,24 @@ function loadOs() {
   var osFromCookie = $.cookie("os");
   if(osFromCookie) {
     $(".os-specific").find("." + osFromCookie + "-link").click();
+  } else if(detectOs()) {
+    $(".os-specific").find("." + detectOs() + "-link").click();
   } else {
     $(".os-specific").find(".win-link").click();
   }
   return osFromCookie;
+}
+
+function detectOs() {
+  try {
+    if (navigator.appVersion.match(/Win/i)) {
+      return "win";
+    } else {
+      return "nix";
+    }
+  } catch(e) {
+    return false;
+  }
 }
 
 function addIcons() {

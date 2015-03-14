@@ -1,0 +1,117 @@
+<!doctype html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>הציגו thumbnails לרשימת הרעיונות - Rails Girls</title>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/js/prefixfree.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/guides.js"></script>
+    <link href="/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="/css/bootstrap-responsive.rtl.css" rel="stylesheet" />
+    <link href="/css/code.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/style.rtl.css" rel="stylesheet" />
+    <link href="/favicon.png" rel="shortcut icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="span3" href="/" id="logo">
+          <img alt="Rails Girls Guides" src="/images/railsgirls-guides.png" />
+        </a>
+        <nav></nav>
+      </div>
+    </header>
+    <article class="container">
+      <div class="span10">
+        <h1 id='_thumbnails__carrierwave'>צרי Thumbnails עם Carrierwave</h1>
+
+<p><em>נוצר ע&#8221;י Miha Filej, <a href='https://twitter.com/mfilej'>@mfilej</a></em></p>
+
+<p><strong>מדריך</strong>: הסבר מה קורה כאשר מגדירים רוחב לתמונה ב-HTML בסוף שלב 4, ומה ההבדל בין זה לבין resize של התמונה על השרת.</p>
+
+<h2 id='_imagemagick'>התקנת ImageMagick</h2>
+
+<ul>
+<li>
+<p>OS X: הריצי את הפקודה <code>brew install imagemagick</code>. אם פקודת ה-brew אינה מותקנת אצלך, את יכולה <a href='http://mxcl.github.io/homebrew/'>להתקין HomeBrew כאן</a>.</p>
+</li>
+
+<li>
+<p>Windows: הורידי והריצי את ה-<a href='http://www.imagemagick.org/script/binary-releases.php?ImageMagick=vkv0r0at8sjl5qo91788rtuvs3#windows'>ImageMagick installer</a> (השתמשי בלינק <em>download</em> הראשון).</p>
+</li>
+
+<li>
+<p>Linux: ב-Ubuntu ו-Debian, הריצי <code>sudo apt-get install imagemagick</code>. השתמשי ב-package manager המתאים במקום <code>apt-get</code> עבור הפצות אחרות.</p>
+</li>
+</ul>
+
+<p><strong>מדריך</strong>: מה זה ImageMagick ואיך זה שונה מספריות/ג&#8217;מים שהשתמשנו בהם קודם?</p>
+
+<p>פתחי את <code>Gemfile</code> בפרוייקט והוסיפי לו:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>gem</span> <span class='s1'>&#39;mini_magick&#39;</span><span class='p'>,</span> <span class='s1'>&#39;3.5.0&#39;</span>
+</code></pre></div>
+<p>מתחת לשורה:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>gem</span> <span class='s1'>&#39;carrierwave&#39;</span>
+</code></pre></div>
+<p>בטרמיניל הריצי:</p>
+<div class='highlight'><pre><code class='sh'>bundle
+</code></pre></div>
+<h2 id='____thumbnails__'>אמרי לאפליקציה שלך ליצור thumbnails כשמעלים תמונה</h2>
+
+<p>פתחי את <code>app/uploaders/picture_uploader.rb</code> ומצאי את השורה שנראית ככה:</p>
+<div class='highlight'><pre><code class='ruby'>  <span class='c1'># include CarrierWave::MiniMagick</span>
+</code></pre></div>
+<p>הסירי את סימן ה <code>#</code>.</p>
+
+<p><strong>מדריך</strong>: הסבר את הקונספט של הערות בקוד.</p>
+
+<p>מתחת לשורה שהרגע שינית, הוסיפי:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>version</span> <span class='ss'>:thumb</span> <span class='k'>do</span>
+  <span class='n'>process</span> <span class='ss'>:resize_to_fill</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='mi'>50</span><span class='p'>,</span> <span class='mi'>50</span><span class='o'>]</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>התמונות שנעלה מעכשיו אמורות לעבור resize, אבל אלה שכבר העלנו לא השתנו. אז ערכי את אחד הרעיונות הקיימים והוסיפי מחדש את התמונה שלו.</p>
+
+<h2 id='_thumbnails'>הצגת ה-thumbnails</h2>
+
+<p>כדי לראות אם התמונה שהועלתה אכן עברה resize פתחי את <code>app/views/ideas/index.html.erb</code>. שני את השורה:</p>
+<div class='highlight'><pre><code class='erb'><span class='x'>&lt;td&gt;</span><span class='cp'>&lt;%=</span> <span class='n'>idea</span><span class='o'>.</span><span class='n'>picture</span> <span class='cp'>%&gt;</span><span class='x'>&lt;/td&gt;</span>
+</code></pre></div>
+<p>ל-</p>
+<div class='highlight'><pre><code class='erb'><span class='x'>&lt;td&gt;</span><span class='cp'>&lt;%=</span> <span class='n'>image_tag</span> <span class='n'>idea</span><span class='o'>.</span><span class='n'>picture_url</span><span class='p'>(</span><span class='ss'>:thumb</span><span class='p'>)</span> <span class='k'>if</span> <span class='n'>idea</span><span class='o'>.</span><span class='n'>picture?</span> <span class='cp'>%&gt;</span><span class='x'>&lt;/td&gt;</span>
+</code></pre></div>
+<p>הסתכלי ברשימת הרעיונות בדפדפן כדי לראות אם ה-thumbnail באמת נמצא שם.</p>
+      </div>
+    </article>
+    <footer>
+      <p>
+        החומר באתר זה נמצא תחת רישיון
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>
+      </p>
+      <p>
+        <a href="http://railsgirls.com">Rails Girls</a>
+        &middot; מוגש בהתרגשות מהלסינקי, פינלנד &middot; עקבו אחרינו ב-<a href="http://twitter.com/railsgirls">Twitter</a>
+        ו-<a href="https://www.facebook.com/railsgirls">Facebook</a>
+      </p>
+    </footer>
+    <script type="text/javascript">
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-19631067-3"]);
+        _gaq.push(["_trackPageview"]);
+
+        (function() {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

@@ -10,52 +10,22 @@ permalink: commenting
 
 ניתן למצוא את הוראות ההתקנה ובניית אפליקציית הרעיונות [כאן](/app).
 
-## שלב 1: הוסיפי את ה-foreigner gem
+## *1.*Create comment scaffold
 
-הוסיפי לקובץ ה-Gemfile
-{% highlight ruby %}
-gem 'foreigner'
-{% endhighlight %}
-
-בטרמינל שלך הפסיקי את השרת אם הוא רץ כרגע, והקלידי
-{% highlight sh %}
-bundle install
-{% endhighlight %}
-
-## שלב 2: צרי את שלד התגובה
-
-צרי את שלד התגובה עם שם המגיב, גוף התגובה (התוכן) ועם הפניה (reference) לטבלת הרעיונות (idea_id).
+Create a comment scaffold, with the commentator name, the comment body (contents of the comment) and with the reference to the ideas table (`idea_id`).
 {% highlight sh %}
 rails g scaffold comment user_name:string body:text idea_id:integer
 {% endhighlight %}
-
-## שלב 3: הוסיפי foreign key
-הוסיפי למיגרציה את ה-foreign key. מתיקיית db/migrate פתחי את הקובץ שמסתיים ב-'create_comments.rb'. לאחר
-{% highlight ruby %}
-	t.timestamps
-end
-{% endhighlight %}
-
-הוסיפי
-{% highlight ruby %}
-add_foreign_key :comments, :ideas
-{% endhighlight %}
-
-כעת, הריצי את המיגרציה על מנת לעדכן את השינויים ב-database באמצעות הפקודה
+This will create a migration file that lets your database know about the new comments table. Run the migrations using
 {% highlight sh %}
 rake db:migrate
 {% endhighlight %}
 
-הפעילי את השרת באמצעות:
-{% highlight sh %}
-rails s
-{% endhighlight %}
+## *2.*Add relations to models
 
-## שלב 4: הוסיפי relations (קשרים) למודל התגובה
-
-את צריכה לוודא ש-Rails מבין את הקשר בין האובייקטים רעיון ותגובה.
-מאחר ורעיון בודד יכול להכיל תגובות רבות, אנחנו צריכים לוודא שמודל הרעיון יודע את זה.
-פתחי את app/models/idea.rb ולאחר השורה
+You need to make sure that Rails knows the relation between objects (ideas and comments).
+As one idea can have many comments we need to make sure the idea model knows that.
+Open app/models/idea.rb and after the row
 {% highlight ruby %}
 class Idea < ActiveRecord::Base
 {% endhighlight %}
@@ -76,7 +46,7 @@ belongs_to :idea
 
 ## שלב 5: הדפיסי למסך את טופס הוספת התגובה ואת רשימת התגובות הקיימות
 
-פתחי את app/views/ideas/show.html ואחרי ה-image_tag
+Open app/views/ideas/show.html.erb and after the image_tag
 {% highlight erb %}
 <%= image_tag(@idea.picture_url, :width => 600) if @idea.picture.present? %>
 {% endhighlight %}
@@ -84,27 +54,29 @@ belongs_to :idea
 הוסיפי
 {% highlight erb %}
 <h3>Comments</h3>
-<% @idea.comments.each do |comment| %>
+<% @comments.each do |comment| %>
   <div>
     <strong><%= comment.user_name %></strong>
     <br />
     <p><%= comment.body %></p>
+    <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
   </div>
 <% end %>
 <%= render 'comments/form' %>
 {% endhighlight %}
 
-בקובץ app/controllers/ideas_controller.rb הוסיפי בפעולת ה-show אחרי השורה
+In `app/controllers/ideas_controller.rb` add to show action after the row
 {% highlight ruby %}
 @idea = Idea.find(params[:id])
 {% endhighlight %}
 
 את
 {% highlight ruby %}
+@comments = @idea.comments.all
 @comment = @idea.comments.build
 {% endhighlight %}
 
-פתחי את הקובץ app/views/comments/_form.html ולאחר
+Open `app/views/comments/_form.html.erb` and after
 {% highlight erb %}
   <div class="field">
     <%= f.label :body %><br />
@@ -115,6 +87,14 @@ belongs_to :idea
 הוסיפי את השורה
 {% highlight erb %}
 <%= f.hidden_field :idea_id %>
+{% endhighlight %}
+
+next, remove
+{% highlight erb %}
+<div class="field">
+  <%= f.label :idea_id %><br>
+  <%= f.number_field :idea_id %>
+</div>
 {% endhighlight %}
 
 זהו! כעת צפי ברעיון שהוספת לאפליקצייה שלך ושם תוכלי לראות את טופס הוספת התגובה.

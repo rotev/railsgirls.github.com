@@ -1,0 +1,180 @@
+<!doctype html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>העלי את האפליקציה שלך ל-GitHub - Rails Girls</title>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/js/prefixfree.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/guides.js"></script>
+    <link href="/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="/css/bootstrap-responsive.rtl.css" rel="stylesheet" />
+    <link href="/css/code.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/style.rtl.css" rel="stylesheet" />
+    <link href="/favicon.png" rel="shortcut icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="span3" href="/" id="logo">
+          <img alt="Rails Girls Guides" src="/images/railsgirls-guides.png" />
+        </a>
+        <nav></nav>
+      </div>
+    </header>
+    <article class="container">
+      <div class="span10">
+        <h1 id='____github'>העלי את האפליקציה שלך ל-GitHub</h1>
+
+<p><em>נוצר ע&#8221;י Alyson La, <a href='https://www.twitter.com/taxaly'>@taxaly</a></em></p>
+
+<h2 id='___'>דברים שתצטרכי לפני שתתחלי</h2>
+
+<h3 id='git__github'>Git &amp; GitHub</h3>
+
+<ul>
+<li>
+<p>בדקי אם Git מותקן * בטרמינל הקלידי <code>git --version</code> (עדיף 1.8 ומעלה)</p>
+</li>
+
+<li>
+<p>אם לא, הורידי את Git <a href='http://git-scm.com/downloads'>כאן</a>. לאחר מכן, הגדירי את פרופיל ה-Git שלך - בטרמינל:</p>
+
+<ul>
+<li>הקלידי <code>git config --global user.name &quot;your-name&quot;</code></li>
+
+<li>הקלידי <code>git config --global user.email &quot;your-email&quot;</code></li>
+
+<li><em>כדי לבדוק אם Git הוגדר בהצלחה תוכלי להקליד</em> <code>git config --list</code></li>
+</ul>
+</li>
+
+<li>
+<p>צרי חשבון בחינם ב-<a href='https://github.com'>GitHub</a> או פשוט הכנסי לאתר אם כבר יש לך חשבון.</p>
+</li>
+</ul>
+
+<p><strong>מדריך:</strong> דבר מעט על git, version control ו-open source</p>
+
+<h2 id='___github__command_line'>דחפי את האפליקציה ל-GitHub באמצעות ה-command line</h2>
+
+<p>בפרופיל ה-GitHub שלך לחצי על &#8220;new repo&#8221; <img alt='screen shot 2013-06-01 at 12 38 50 pm' src='https://f.cloud.github.com/assets/2623954/595307/eb70c6cc-caf2-11e2-9d2d-60deb31ac049.png' /> תני לו שם (למשל: rails-girls), ותיאור קצר. מבין האופציות &#8220;public&#8221; ו-&#8220;private&#8221;, בחרי את &#8220;public&#8221;, ולחצי על &#8220;create repository&#8221;.</p>
+
+<p>בטרמינל&#8211;ודאי שאת נמצאת בתיקיית הפרוייקט (אם לא, הגיעי אליה באמצעות הפקודה <code>cd</code>)&#8211;והקלידי:</p>
+
+<p><code>git init</code></p>
+
+<p>זה יצור git repository המקושר לפרוייקט שלך.</p>
+
+<p><em>הערה:</em> אם כבר עשית את <a href='/heroku'>מדריך Heroku</a>, אז כבר יצרת את ה-git repository ואת יכולה להמשיך האלה.</p>
+
+<p>השלב הבא:</p>
+
+<p><code>touch README</code></p>
+
+<p>זה יצור קובץ שנקרא &#8220;README&#8221; בתיקיית הפרוייקט שלך.</p>
+
+<p><strong>מדריך:</strong> דבר מעט על קבצי README.</p>
+
+<p>לאחר מכן הקלידי:</p>
+
+<p><code>git status</code></p>
+
+<p>זה יציג רשימה של כל הקבצים בתיקייה הנוכחית.</p>
+
+<p><strong>מדריך:</strong> דבר על פקודות ה-git המועדפות עליך.</p>
+
+<p>לאחר מכן הקלידי:</p>
+
+<p><code>git add .</code></p>
+
+<p>זה יוסיף את כל הקבצים והשינויים בפרוייקט לסביבה זמנית.</p>
+
+<p>לאחר מכן הקלידי:</p>
+
+<p><code>git commit -m &quot;first commit&quot;</code></p>
+
+<p>זה יעשה &#8220;commit&#8221; לכל הקבצים שלך, תחת ההודעה &#8220;first commit&#8221;.</p>
+
+<p>לאחר מכן הקלידי:</p>
+
+<p><code>git remote add origin https://github.com/username/rails-girls.git</code></p>
+
+<p><em>ה-URL של ה-repository מופיע בעמוד ה-GitHub של ה-repository שיצרת קודם באתר, אז הרגישי חופשי להעתיק אותו משם ולהדביק אותו בפקודה שלמעלה, במקום להקליד אותו ידינית. את יכולה להעתיק את הלינק מעמוד ה-GitHub repository ע&#8221;י לחיצה על אייקון ה-&#8220;clipboard&#8221; מימין ל-URL.</em></p>
+
+<p>זה יצור &#8220;remote&#8221;, או <em>connection</em>, בשם &#8220;origin&#8221; שמצביע על ה-GitHub repository שיצרת.</p>
+
+<p>לאחר מכן הקלידי:</p>
+
+<p><code>git push -u origin master</code></p>
+
+<p>הפקודה הזאת שולחת את כל ה-commit-ים שיצרת בענך &#8220;master&#8221; ל-GitHub.</p>
+
+<p>מזל טוב! האפליקציה שלך כרגע מפורסמת ב-GitHub! הסתכלי עליה ע&#8221;י גלישה לאותו URL שהשתמשת בו למעלה: https://github.com/username/rails-girls (ללא הסיומת .git).</p>
+
+<p>אם את רוצה להמשיך לבצע שינויים ולדחוף אותם ל-GitHub, תצטרכי פשוט להשתמש ב-3 הפקודות הבאות:</p>
+
+<p><code>git add .</code></p>
+
+<p><code>git commit -m &quot;type your commit message here&quot;</code></p>
+
+<p><code>git push origin master</code></p>
+
+<h2 id='_'>מה הלאה?</h2>
+
+<h3 id='____'>היי חלק מקהילת הקוד הפתוח</h3>
+
+<ul>
+<li>עקבי אחרי בנות הריילס והמדריכים ב-GitHub.</li>
+
+<li>ככבי או עקבי אחר הפרוייקטים שלהם. <span class='hebrew-fix'>f</span></li>
+
+<li>בצעי <a href='https://help.github.com/articles/fork-a-repo'>Fork</a> ל-&#8220;repo&#8221; (קיצור של repository), ואז תשכפלי ותדחפי שינויים ל-fork שלך. שתפי את השינויים שלך עם ה-repo המקורי ע&#8221;י כך שתשלחי להם <a href='https://help.github.com/articles/using-pull-requests'>pull request</a>!</li>
+
+<li>צרי &#8220;issue&#8221; בפרוייקט כשאת מוצאת באג.</li>
+
+<li>גלי פרוייקטי open source אחרים - חפשי לפי שפת תכנות או מילת מפתח.</li>
+</ul>
+
+<h3 id='___git'>למדי עוד על Git</h3>
+
+<ul>
+<li>נסי את המדריך <a href='http://try.github.io/'>trygit.org</a></li>
+
+<li>השתמשי ב-<a href='https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf'>Git Cheatsheet</a></li>
+
+<li>חפי עוד פקודות Git ב-<a href='http://git-scm.com/'>git-scm.org</a></li>
+</ul>
+      </div>
+    </article>
+    <footer>
+      <p>
+        החומר באתר זה נמצא תחת רישיון
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>
+      </p>
+      <p>
+        <a href="http://railsgirls.com">Rails Girls</a>
+        &middot; מוגש בהתרגשות מהלסינקי, פינלנד &middot; עקבו אחרינו ב-<a href="http://twitter.com/railsgirls">Twitter</a>
+        ו-<a href="https://www.facebook.com/railsgirls">Facebook</a>
+      </p>
+    </footer>
+    <script type="text/javascript">
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-19631067-3"]);
+        _gaq.push(["_trackPageview"]);
+
+        (function() {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>
