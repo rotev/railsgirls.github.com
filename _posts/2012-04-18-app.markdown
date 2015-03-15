@@ -125,12 +125,10 @@ ruby bin\rails server
   </div>
 </div>
 
-**משתמשות Windows:** יתכן ותצטרכי להחליף את `bin\rails` עם `script\rails` או פשוט לכתוב `rails server` במקום כל הפקודה, תלוי בגירסת ה-Rails שמותקנת אצלך.
-
 פתחי את הדפדפן שלך וגילשי לכתובת [http://localhost:3000](http://localhost:3000). את אמורה לראות עמוד "Welcome aboard", שאומר שיצירת האפליקציה פעלה כראוי.
-You should see "Welcome aboard" page, which means that the generation of your new app worked correctly.
 
-Notice in this window the command prompt is not visible because you are now in the Rails server, the command prompt looks like this:
+
+שימי לב כי בחלון הזה האופציה להרצת פקודה אינה נראית, מכיוון שאת נמצאת כעת בתוך שרת ה-Rails. כשאפשר להריץ פקודות, הטרמינל אמור להראות כך:
 
 <div class="os-specific">
   <div class="nix">
@@ -145,24 +143,11 @@ $
   </div>
 </div>
 
-When the command prompt is not visible you cannot execute new commands. If you try running `cd` or another command it will not work. To return to the normal command prompt:
-
-Hit `CTRL-C` in the terminal to quit the server.
-
-שימי לב כי בחלון הזה האופציה להרצת פקודה אינה נראית, מכיוון שאת נמצאת כעת בתוך שרת ה-Rails. כשאפשר להריץ פקודות, הטרמינל אמור להראות כך:
-
-
 זה נקרא "command prompt". כשה-command prompt אינו נראה אינך יכולה להריץ פקודות חדשות. אם תנסי להריץ את הפקודה `cd` או כל פקודה אחרת, זה לא יעבוד. על מנת לחזור ל-command prompt הרגיל:
 
 לחצי `CTRL-C` בטרמינל כדי לכבות את השרת.
 
 **מדריך/ה:** הסבירי מה כל פקודה עושה. מה ג'ונרט? מה עושה השרת?
-
-{% highlight sh %}
-rails generate scaffold idea name:string description:text picture:string
-{% endhighlight %}
-
-The scaffold creates new files in your project directory, but to get it to work properly we need to run a couple of other commands to update our database and restart the server.
 
 
 ## *2.*יצירת שלד רעיון
