@@ -19,35 +19,34 @@ permalink: install
 
 ## התקנה על OS X ##  {#setup_for_os_x}
 
-**שלב 1.** בואי נבדוק את גירסת מערכת ההפעלה.
-### *1.* Let&#8217;s check the version of the operating system.
+### *1.*  בואי נבדוק את הגרסא של מערכת ההפעלה.
 
 לחצי על תפריט ה-Apple ובחרי *About this Mac*.
 
 ![Apple menu](/images/1.png "Apple menu")
 
-### *2.* In the window you will find the version of your operating system.
-If your version number starts with 10.6, 10.7, 10.8, 10.9 or 10.10 this guide is for you. If it&#8217;s something else, we can setup your machine at the event.
+### *2.* בחלון הזה תמצאי את הגרסא של מערכת ההפעלה
+אם הגרסא שלך מתחילה ב 10.6, 10.7, 10.8, 10.9 או 10.10 אז המדריך הזה בשבילך. אם יש לך גרסא אחרת, אז נעזור לך להתקין בארוע.
 
 ![About this Mac dialog](/images/2.png "About this Mac dialog")
 
-### *3a.* If your OS X version is 10.9 or higher:
+### *3א.* אם גרסאת ה- OS X שלך היא 10.9 או מעל:
 
-If your version number starts with 10.9 or 10.10, follow these steps. We are installing homebrew and rbenv.
+אם הגרסא שלך מתחילה ב 10.9 או 10.10, תעקבי אחרי השלבים הבאים. אנחנו נתקין homebrew ו- rbenv.
 
-#### *3a1.* Install Command line tools on terminal:
+#### *3א1.* התקיני כלי Command line דרך הטרמינל:
 
 {% highlight sh %}
 xcode-select --install
 {% endhighlight %}
 
-#### *3a2.* Install [Homebrew](http://brew.sh/):
+#### *3א2.* התקיני [Homebrew](http://brew.sh/):
 
 {% highlight sh %}
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 {% endhighlight %}
 
-#### *3a3.* Install [rbenv](https://github.com/sstephenson/rbenv):
+#### *3א3.* התקיני [rbenv](https://github.com/sstephenson/rbenv):
 
 {% highlight sh %}
 brew update
@@ -57,69 +56,65 @@ echo 'export PATH="$HOME/.rbenv/shims:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 {% endhighlight %}
 
-#### *3a4.* Build Ruby with rbenv:
+#### *3א4.* התקיני Ruby עם rbenv:
 
-You can find the newest version of Ruby with the command "rbenv install -l".
+את יכולה למצוא מה הגרסא הכי חדשה של Ruby עם הפקודה “rbenv install -l”.
 
 {% highlight sh %}
 rbenv install 2.2.0
 {% endhighlight %}
 
-If you got "OpenSSL::SSL::SSLError: ... : certificate verify failed" error, try it this way.
+אם קיבלת שגיאת "OpenSSL::SSL::SSLError: ... : certificate verify failed”, נסי בדרך הבאה:
 
 {% highlight sh %}
 brew install curl-ca-bundle
 cp /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt `ruby -ropenssl -e 'puts OpenSSL::X509::DEFAULT_CERT_FILE'`
 {% endhighlight %}
 
-#### *3a5.* Set default Ruby:
+#### *3א5.* הגדירי את ברירת המחדל של Ruby:
 
 {% highlight sh %}
 rbenv global 2.2.0
 {% endhighlight %}
 
-#### *3a6.* Install rails:
+#### *3א6.* התקיני Rails:
 
 {% highlight sh %}
 gem i rails --no-ri --no-rdoc
 {% endhighlight %}
 
-### *3b.* If your OS X version is 10.6, 10.7, or 10.8:
-Download the RailsInstaller for your version of OS X:
+### *3ב.* אם גרסאת ה- OS X שלך היא 10.6, 10.7 או 10.8:
+הורידי RailsInstaller עבור גרסאת ה- OS X שלך:
 
 * [RailsInstaller for 10.7 and 10.8](http://railsinstaller.s3.amazonaws.com/RailsInstaller-1.0.4-osx-10.7.app.tgz) <span class="muted">(325MB)</span>
 * [RailsInstaller for 10.6](http://railsinstaller.s3.amazonaws.com/RailsInstaller-1.0.4-osx-10.6.app.tgz) <span class="muted">(224MB)</span>
 
-Double click the downloaded file and it will unpack it into the current directory. Double click the the newly unpacked 'RailsInstaller-1.0.4-osx-10.7.app' or 'RailsInstaller-1.0.4-osx-10.6.app' and follow the instructions. It will open a README file with 'Rails Installer OS X' at the top. Please **ignore** the instructions in this file.
+לחיצה כפולה על הקובץ על הקובץ שירד יפתח אותו בתיקייה הנוכחית.
+לחצי לחיצה כפולה על הקובץ החדש 'RailsInstaller-1.0.4-osx-10.7.app' או 'RailsInstaller-1.0.4-osx-10.6.app' ופעלי לפי ההוראות.
+זה יפתח קובץ README  עם 'Rails Installer OS X'  בראש הדף. אנא **התעלמי** מההוראות בקובץ הזה.   
 
-If the Rails version wasn't the latest, you could update it using a following command on terminal.
+אם גרסאת ה - Rails לא העדכנית ביותר, את יכולה להעדכן אותה בעזרת הפקודה הבאה בטרמינל:
 
 {% highlight sh %}
 gem update rails --no-ri --no-rdoc
 {% endhighlight %}
 
-Make sure that all works well by running the application generator command.
+בדקי כי הכל עובד באופן תקין ע״י הרצה של פקודת יצירת האפליקציה:
 
 {% highlight sh %}
 rails new railsgirls
 {% endhighlight %}
 
 
-**שלב אחרון.** את תזדקקי גם לעורך טקסט על מנת לערוך קבצי קוד. אנו ממליצות על Sublime Text.
-Make sure that all works well by running the application generator command.
+### *4.* התקיני עורך טקסט לעריכת קבצי האפליקציה
 
+אנחנו ממליצות להוריד את Sublime
 
-### *4.* Install a text editor to edit code files
+[Sublime Text 2](http://www.sublimetext.com/2).
 
-For the workshop we recommend the text editor Atom.
+### *5.* עדכני את הדפדפן
 
-* [Download Atom and install it](https://atom.io/)
-
-If you are using Mac OS X 10.7 or older versions, you can use another editor [Sublime Text 2](http://www.sublimetext.com/2).
-
-### *5.* Update your browser
-
-Open [whatbrowser.org](http://whatbrowser.org) and update your browser if you don't have the latest version.
+פתחי [whatbrowser.org](http://whatbrowser.org) ועדכני את הדפדפן אם אין לך את הגרסא המעודכנת ביותר.
 
 
 כעת צריכה להיות לך סביבת עבודה מוכנה לתכנות ב- Ruby on Rails. ברכותינו!	
@@ -128,23 +123,24 @@ Open [whatbrowser.org](http://whatbrowser.org) and update your browser if you do
 
 ## התקנה על Windows ##  {#setup_for_windows}
 
-### *1.* Install Rails
+### *1.* התקיני Rails
 
-Download [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.1.0.exe) and run it. Click through the installer using the default options.
+תורידי [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.1.0.exe) ותריצי אותו.
+תעברי את ההתקנה דרך הגדרות ברירת המחדל.
 
-Open `Command Prompt with Ruby on Rails` and run the following command:
+פתחי את `Command Prompt with Ruby on Rails` ותריצי את הפקודה הבאה:
 
 {% highlight sh %}
 rails -v
 {% endhighlight %}
 
-If the Rails version is less than 4, update it using a following command:
+אם גרסאת ה Rails היא פחות מ- 4, עדכני אותה עם הפקודה הבאה:
 
 {% highlight sh %}
 gem update rails --no-ri --no-rdoc
 {% endhighlight %}
 
-Make sure that all works well by running the application generator command.
+בדקי כי הכל עובד באופן תקין ע״י הרצה של פקודת יצירת האפליקציה:
 
 {% highlight sh %}
 rails new railsgirls
@@ -152,11 +148,11 @@ cd railsgirls
 rails server
 {% endhighlight %}
 
-## Possible errors
+## בעיות אפשריות
 
-### Gem::RemoteFetcher error
+###  שגיאת Gem::RemoteFetcher 
 
-If you get this error when running `rails new railsgirls` or `gem update rails`:
+אם קיבלת את השגיאה הבא בעת ריצה של  `rails new railsgirls` או `gem update rails`:
 
 {% highlight sh %}
 Gem::RemoteFetcher::FetchError: SSL_connect returned=1 errno=0 state=SSLv3 read
@@ -164,16 +160,16 @@ server certificate B: certificate verify failed (https://rubygems.org/gems/i18n-
 0.6.11.gem)
 {% endhighlight %}
 
-This means you have an older version of Rubygems and will need to update it manually first verify your Rubygems version
+זה אומר שיש לך גרסא ישנה של Rubygems ואת תצטרכי תחילה ידנית לבדוק מהי הגרסא של Rubygems שיש לך:
 
 {% highlight sh %}
 gem -v
 {% endhighlight %}
 
-If it is lower than `2.2.3` you will need to manually update it:
+אם הגרסא היא פחות מ`2.2.3` את תצטרכי לעדכן אותה ידנית:  
 
 
-First download the [ruby-gems-update gem](https://github.com/rubygems/rubygems/releases/download/v2.2.3/rubygems-update-2.2.3.gem). Move the file to `c:\\rubygems-update-2.2.3.gem` then run:
+קודם כל תורידי את[ruby-gems-update gem](https://github.com/rubygems/rubygems/releases/download/v2.2.3/rubygems-update-2.2.3.gem). תעבירי את הקובץ ל`c:\\rubygems-update-2.2.3.gem` ותריצי:  
 
 {% highlight sh %}
 gem install --local c:\\rubygems-update-2.2.3.gem
@@ -181,69 +177,70 @@ update_rubygems --no-ri --no-rdoc
 gem uninstall rubygems-update -x
 {% endhighlight %}
 
-Check your version of rubygems
+בדקי את הגרסא של ה- Rubygems:
 
 {% highlight sh %}
 gem -v
 {% endhighlight %}
 
-Make sure it is higher than `2.2.3`. Re-run the command that was failing previously.
+וודאי כי כעת הגרסא היא מעל`2.2.3`. הריצי את הפקודות הקודמות שוב אם הם נכשלו. 
 
 
-### 'x64_mingw' is not a valid platform` Error
+###  שגיאת 'x64_mingw' is not a valid platform`
 
-Sometimes you get the following error when running `rails server`:
-`'x64_mingw' is not a valid platform` If you experience this error after using the RailsInstaller you have to do a small edit to the file `Gemfile`:
+לפעמים מקבלים את השגיאה הבאה בעת ריצה של`rails server` :
+ `'x64_mingw' is not a valid platform`
+אם קיבלת את השגיאה הזאת לאחר שימוש ב- RailsInstaller את צריכה לעשות שינוי קטן לקובץ  `Gemfile`:
 
-Look at the bottom of the file. You will probably see something like this as one of the last lines in the file:
-`gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]`. If you have this line with `:x64_mingw`, then please delete the `:x64_mingw` part. In the end it should just say:
+הסתכלי לתחתית הקובץ. את  בטח תראי משהו כזה בשורות האחרונות של הקובץ:
+
+`gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]`
+
+אם יש לך את השורה הזאת יחד עם`:x64_mingw` , אז מחקי את   `:x64_mingw`. בסוף זה אמור להיראות כך:
+
 `'tzinfo-data', platforms: [:mingw, :mswin]`
 
-After you did that, please use your Command Prompt again and type `bundle update`.
+לאחר שעשית את זה, תריצי בטרמינל את הפקודה `bundle update`.
 
-### *2.* Install a text editor to edit code files
 
-For the workshop we recommend the text editor Atom.
+### *2.* התקיני עורך טקסט לעריכת קבצי האפליקציה
 
-* [Download Atom and install it](https://github.com/atom/atom/releases/latest)
-  * Download an atom zip file for windows and decompress it.
-  * Copy the folder into your Program Files.
-  * Launch atom in the folder.
+אנחנו ממליצות להוריד את Sublime
 
-If you are using Windows Vista or older versions, you can use another editor [Sublime Text 2](http://www.sublimetext.com/2).
+[Sublime Text 2](http://www.sublimetext.com/2)
 
-Now you should have a working Ruby on Rails programming setup. Congrats!
+### *3.*עדכני את הדפדפן
 
-### *3.* Update your browser
+אם את משתמשת ב- Internet Explorer, אז אנחנו ממליצות להתקין [Firefox](http://mozilla.org/firefox) או  [Google Chrome](http://google.com/chrome).
 
-If you use Internet Explorer, we recommend installing [Firefox](mozilla.org/firefox) or [Google Chrome](google.com/chrome).
+פתחי [whatbrowser.org](http://whatbrowser.org) ועדכני את הדפדפן אם אין לך את הגרסא המעודכנת ביותר.
 
-Open [whatbrowser.org](http://whatbrowser.org) and update your browser if you don't have the latest version.
-
+כעת צריכה להיות לך סביבת עבודה מוכנה לתכנות ב- Ruby on Rails. ברכותינו!
 <hr />
 
 ## התקנה על Linux ##  {#setup_for_linux}
 
-### *1.* Install Rails
+### *1.* התקנה של Rails
 
+בשביל להתקין את סביבת הפיתוח אל  Ruby on Rails כל מה שצריך לעשות זה להעתיק את השורה הבאה לגרסאת ה- Linux שיש לך (Ubuntu או Fedora), להעביר אותה לטרמינל,  וללחוץ Enter. תהני משורות הטקסט שעפות לך על המסך. זה יכול לקחת קצת זמן - קחי משקה לפני שהתהליך מתחיל :)
 
-To install the Ruby on Rails development environment you just need to copy the line below for your Linux distribution (Ubuntu or Fedora), paste it in the Terminal and press Enter. Enjoy the text flying on the screen; it will take quite some time. Grabbing a refreshing drink before starting is encouraged.
-
-#### For Ubuntu:
+####  עבור Ubuntu:
 
 {% highlight sh %}
 bash < <(curl -sL https://raw.github.com/railsgirls/installation-scripts/master/rails-install-ubuntu.sh)
 {% endhighlight %}
 
-If you are going to use RVM installations with gnome-terminal, you'll probably need to change it's default options before you can see and use the right Ruby and Rails versions. Find out how: [RVM documentation](http://rvm.io/integration/gnome-terminal).
+אם את מתכננת להשתמש בהתקנות RVM עם gnome-terminal, את תצטרכי לשנות את הגדרות ברירת המחדל לפני שתוכלי לראות את גרסאות ה- Ruby on Rails הנכונות. גלי איך כאן:[RVM documentation](http://rvm.io/integration/gnome-terminal).
 
-#### For Fedora:
+####  עבור Fedora:
 
 {% highlight sh %}
 bash < <(curl -sL https://raw.github.com/railsgirls/installation-scripts/master/rails-install-fedora.sh)
 {% endhighlight %}
 
-Make sure that all works well by running the application generator command.
+
+
+בדקי שהכל עובד תקין ע״י הרצה של השורות הבאות:
 
 {% highlight sh %}
 rails new railsgirls
@@ -252,16 +249,15 @@ rails server
 {% endhighlight %}
 
 
-### *2.* Install a text editor to edit code files
+### *2.* התקיני עורך טקסט לעריכת קבצי האפליקציה
 
-For the workshop we recommend the text editor Sublime Text.
+אנחנו ממליצות להוריד את Sublime
 
-* [Download Sublime Text and install it](http://www.sublimetext.com/2)
+[Sublime Text 2](http://www.sublimetext.com/2).
 
+### *3.* עדכני את הדפדפן
 
-### *3.* Update your browser
-
-Open [whatbrowser.org](http://whatbrowser.org) and update your browser if you don't have the latest version.
+פתחי [whatbrowser.org](http://whatbrowser.org) ועדכני את הדפדפן אם אין לך את הגרסא המעודכנת ביותר.
 
 
 כעת צריכה להיות לך סביבת עבודה מוכנה לתכנות ב- Ruby on Rails. ברכותינו!	
