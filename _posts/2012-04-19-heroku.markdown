@@ -16,9 +16,9 @@ __מדריך/ה__: דבר/י על היתרונות בהעלאה ל-Heroku לעו
 
 ### הכיני את האפליקציה שלך
 
-#### Version Control Systems
+#### מערכת לשמירת גרסאות
 
-We need to add our code to version control. You can do this by running the following in the terminal:
+אנחנו צריכים להכניס את הקוד שלך למערכת לשמירת גרסאות. את יכולה לעשות זאת ע״י הרצה של הפקודות הבאות בטרמינל:
 
 {% highlight sh %}
 git init
@@ -29,7 +29,7 @@ git add .
 git commit -m "initial commit"
 {% endhighlight %}
 
-__COACH__: This would be a good time to talk about version control systems and git, also explain the `.gitignore` and why we don't want these files included.
+__מדריך__: זה יכול להיות זמן טוב לדבר על מערכות שמירת גרסאת ועל git. כמו כן הסבר מה זה`.gitignore` ולמה אנחנו לא צריכים להכניס את הקבצים האלה. 
 
 #### עדכון בסיסי הנתונים שלנו
 
@@ -57,7 +57,6 @@ __מדריך/ה__: תוכל/י לדבר על RDBMS ועל אלו שקיימים 
 #### הוספת rails\_12factor
 
 כעת, עלינו להוסיף את rails\_12factor ל- Gemfile שלנו כדי להפוך את האפליקציה שלנו לזמינה ב- Heroku.
-This gem modifies the way Rails works to suit Heroku, for example Logging is updated and the configuration for static assets (your images, stylesheets and javascript files) is tweaked to work properly within Heroku's systems.
 
 אנא שני את החלק הבא ב- Gemfile:
 
@@ -76,15 +75,14 @@ group :production do
 end
 {% endhighlight %}
 
-__מדריך/ה__: תוכל/י לדבר על logging ב- Heroku.
-After this run `bundle`, then commit the changes to Gemfile.lock to your repository:
+
+אחרי זה תוכלי להריץ `bundle` ולעשות commit לשינויים ב Gemfile.lock:
 
 {% highlight sh %}
 git commit -a -m "Added rails_12factor gem and updated Gemfile.lock"
 {% endhighlight %}
 
-__COACH__: You can talk about logging on Heroku, as well as its other quirks.
-
+__מדריך/ה__: תוכל/י לדבר על logging ב- Heroku.
 
 ### פרסי את האפליקציה שלך (Deployment)
 
@@ -132,7 +130,7 @@ Total 101 (delta 6), reused 0 (delta 0)
 כאשר הפקודה הזו מסיימת לרוץ, תוכלי גשת אל האפליקציה המבוססת דרך ה- url. עבור האפליקציה שבדוגמה הזו, תוכלי לגשת אל [http://evening-sky-7498.herokuapp.com](http://evening-sky-7498.herokuapp.com). תוכלי גם לכתוב `heroku open` בטרמינל כדי להגיע אל הדף.
 
 
-#### Closing notes
+#### הערות סיום
 
 Heroku's platform is not without its quirks. Applications run on Heroku live within an ephermeral environment — this means that (except for information stored in your database) any files created by your application will disappear if it restarts (for example, when you push a new version).
 
