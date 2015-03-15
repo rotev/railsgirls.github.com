@@ -10,22 +10,23 @@ permalink: commenting
 
 ניתן למצוא את הוראות ההתקנה ובניית אפליקציית הרעיונות [כאן](/app).
 
-## *1.*Create comment scaffold
+## *1.*הוסיפי תגובות של Scaffold
 
-Create a comment scaffold, with the commentator name, the comment body (contents of the comment) and with the reference to the ideas table (`idea_id`).
+הוסיפי תגובות של Scaffold עם שם המגיב, התגובה עצמה והפניה לטבלת הרעיונות ( `idea_id`).
 {% highlight sh %}
 rails g scaffold comment user_name:string body:text idea_id:integer
 {% endhighlight %}
-This will create a migration file that lets your database know about the new comments table. Run the migrations using
+
+זה יצור קובץ מיגרציה אשר מעדכן את מסד הנתונים על הטבלה החדשה של התגובות. הריצי את המיגרציה כך:
 {% highlight sh %}
 rake db:migrate
 {% endhighlight %}
 
-## *2.*Add relations to models
+## *2.*הוסיפי קשרים בין המודלים
 
-You need to make sure that Rails knows the relation between objects (ideas and comments).
-As one idea can have many comments we need to make sure the idea model knows that.
-Open app/models/idea.rb and after the row
+צריך לגרום לRails לדעת על הקשר בין האובייקטים השונים (רעיונות ותגובות).
+לרעיון אחד יכולים להיות הרבה תגובות, ואנחנו צריכים לגרום למודל לדעת את זה.
+פתחי את app/models/idea.rb ואחרי השורה: 
 {% highlight ruby %}
 class Idea < ActiveRecord::Base
 {% endhighlight %}
@@ -44,7 +45,7 @@ class Comment < ActiveRecord::Base
 belongs_to :idea
 {% endhighlight %}
 
-## שלב 5: הדפיסי למסך את טופס הוספת התגובה ואת רשימת התגובות הקיימות
+## *3.* הדפיסי למסך את טופס הוספת התגובה ואת רשימת התגובות הקיימות
 
 Open app/views/ideas/show.html.erb and after the image_tag
 {% highlight erb %}
