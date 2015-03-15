@@ -11,9 +11,9 @@ permalink: design
 כעת האפליקצייה שלך רצה היטב, אבל היא עדיין נראית כמו שלד. בואי נעצב אותה קצת כדי לגרום לה להראות כמו אתר מקצועי.
 כשתסיימי את המדריך הזה, האפליקצייה שלך תראה [כך](http://railsgirlsapp.herokuapp.com/ideas).
 
-## Step 1: התאימי את ה-application layout
+## שלב 1: התאימי את ה-application layout
 
-Open `app/assets/stylesheets/application.css`, replace the line
+פתחי את `app/assets/stylesheets/application.css` , והחליפי את השורה
 
 {% highlight html %}
 body { padding-top: 100px; }
