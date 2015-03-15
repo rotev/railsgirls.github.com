@@ -60,13 +60,14 @@ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
    <%= yield %>
 {% endhighlight %}
 
-Open up `app/views/ideas/show.html.erb` and remove the line that says:
+פתחי את `app/views/ideas/show.html.erb` והורידי את השורה הבאה:
+
 
 {% highlight erb %}
 <p id="notice"><%= notice %></p>
 {% endhighlight %}
 
-Do the same for `app/views/comments/show.html.erb`. These lines are not necessary as we've put the notice in the `app/views/layouts/application.html.erb` file.
+תעשי את אותו הדבר עבור `app/views/comments/show.html.erb` . השורות האלה מיותרות מכיוון שאנחנו הוספנו את זה לקובץ `app/views/layouts/application.html.erb`.
 
 לסיום, אם את מתכננת [להעלות את האפליקציה שלך לאינטרנט עם Heroku](/heroku) עלייך לפתוח את הקובץ `config/application.rb` ולהוסיף את השורה הבאה:
 {% highlight ruby %}
@@ -113,13 +114,13 @@ Do the same for `app/views/comments/show.html.erb`. These lines are not necessar
 </ul>
 {% endhighlight %}
 
-Finally, force the user to redirect to the login page if the user was not logged in. Open up `app/controllers/application_controller.rb` and add:
+לסיום, בשביל להעביר את המשתמש לעמוד ההרשמה במידה והוא לא נרשם לאתר, פתחי את`app/controllers/application_controller.rb` והוסיפי: 
 
 {% highlight ruby %}
   before_action :authenticate_user!
 {% endhighlight %}
 
-after `protect_from_forgery with: :exception`.
+אחרי `protect_from_forgery with: :exception`.
 
 פתחי את הדפדפן שלך ונסי להתחבר לאפליקציה ולהתנתק ממנה.
 
