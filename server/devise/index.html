@@ -1,0 +1,154 @@
+<!doctype html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>הוספת אותנטיקציה עם Devise - Rails Girls</title>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/js/prefixfree.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/guides.js"></script>
+    <link href="/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="/css/bootstrap-responsive.rtl.css" rel="stylesheet" />
+    <link href="/css/code.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/style.rtl.css" rel="stylesheet" />
+    <link href="/favicon.png" rel="shortcut icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="span3" href="/" id="logo">
+          <img alt="Rails Girls Guides" src="/images/railsgirls-guides.png" />
+        </a>
+        <nav></nav>
+      </div>
+    </header>
+    <article class="container">
+      <div class="span10">
+        <h1 id='___devise'>הוסיפי אותנטיקציה עם Devise</h1>
+
+<p><em>נוצר על ידי Piotr Steininger, <a href='https://twitter.com/polishprince'>@polishprince</a></em></p>
+
+<p><em>עודכן על ידי Ernesto Jimenez, <a href='https://twitter.com/ernesto_jimenez'>@ernesto_jimenez</a></em></p>
+
+<p><strong>המדריך הזה מניח שכבר בנית האפליקציה לדוגמה של RailsGirls המתוארת</strong> <a href='/app'><strong>במדריך לבניית אפליקציה</strong></a>.</p>
+
+<h2 id='_0___devise_gem'>שלב 0: הוסיפי את ה-devise gem</h2>
+
+<p>פתחי את ה- <code>Gemfile</code> והוסיפי את השורה הבאה</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>gem</span> <span class='s1'>&#39;devise&#39;</span>
+</code></pre></div>
+<p>ולאחר מכן הריצי את הפקודה</p>
+<div class='highlight'><pre><code class='sh'>bundle install
+</code></pre></div>
+<p>על מנת להתקין את ה- gem. <strong>זכרי גם לאתחל את שרת ה- Rails</strong>.</p>
+
+<h2 id='_1___devise__'>שלב 1: שלבי את devise באפליקציה שלך</h2>
+
+<p>הריצי את הפקודה הבאה בטרמינל.</p>
+<div class='highlight'><pre><code class='sh'>rails g devise:install
+</code></pre></div>
+<h2 id='_2___devise'>שלב 2: התאימי את Devise</h2>
+
+<p>וודאי שהגדרת את אופציית ברירת המחדל ל- url בקבצי הגדרת הסביבה. פתחי את הקובץ <code>config/environments/development.rb</code> והוסיפי את השורה הבאה:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>config</span><span class='o'>.</span><span class='n'>action_mailer</span><span class='o'>.</span><span class='n'>default_url_options</span> <span class='o'>=</span> <span class='p'>{</span> <span class='ss'>:host</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;localhost:3000&#39;</span> <span class='p'>}</span>
+</code></pre></div>
+<p>לפני מילת המפתח <code>end</code>.</p>
+
+<p>פתחי את <code>app/views/layouts/application.html.erb</code> והוסיפי:</p>
+<div class='highlight'><pre><code class='erb'><span class='cp'>&lt;%</span> <span class='k'>if</span> <span class='n'>notice</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>  &lt;p class=&quot;alert alert-notice&quot;&gt;</span><span class='cp'>&lt;%=</span> <span class='n'>notice</span> <span class='cp'>%&gt;</span><span class='x'>&lt;/p&gt;</span>
+<span class='cp'>&lt;%</span> <span class='k'>end</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='cp'>&lt;%</span> <span class='k'>if</span> <span class='n'>alert</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>  &lt;p class=&quot;alert alert-error&quot;&gt;</span><span class='cp'>&lt;%=</span> <span class='n'>alert</span> <span class='cp'>%&gt;</span><span class='x'>&lt;/p&gt;</span>
+<span class='cp'>&lt;%</span> <span class='k'>end</span> <span class='cp'>%&gt;</span><span class='x' />
+</code></pre></div>
+<p>ממש מעל</p>
+<div class='highlight'><pre><code class='ruby'>   <span class='o'>&lt;%=</span> <span class='k'>yield</span> <span class='o'>%&gt;</span>
+</code></pre></div>
+<p>לסיום, אם את מתכננת <a href='/heroku'>להעלות את האפליקציה שלך לאינטרנט עם Heroku</a> עלייך לפתוח את הקובץ <code>config/application.rb</code> ולהוסיף את השורה הבאה:</p>
+<div class='highlight'><pre><code class='ruby'>  <span class='n'>config</span><span class='o'>.</span><span class='n'>assets</span><span class='o'>.</span><span class='n'>initialize_on_precompile</span> <span class='o'>=</span> <span class='kp'>false</span>
+</code></pre></div>
+<p>כך שתהיה השורה השלישית מתחתית הקובץ (לפני מילת המפתח <code>end</code> הראשונה מבין השתיים)</p>
+
+<h2 id='_3_____user'>שלב 3: צרי את מודל המשתמש (User)</h2>
+
+<p>אנו נשתמש בחבילת סקריפטים לשם יצירת מודל של משתמש.</p>
+<div class='highlight'><pre><code class='sh'>   rails g devise user
+   rake db:migrate
+</code></pre></div>
+<p><strong>מדריך/ה:</strong> הסבר/הסבירי איזה מודל משתמש (user model) נוצר. מהם השדות?</p>
+
+<h2 id='_4_____'>שלב 4: צרי את המשתמש הראשון שלך</h2>
+
+<p>כעת, לאחר שערכת את כל הסידורים הנדרשים, תוכלי ליצור את המשתמש הראשון שלך. Devise יוצר את כל הקוד וההפניות הנדרשים ליצירת חשבונות משתמש, פרטי כניסה לאפליקציה ויציאה ממנה, וכולי.</p>
+
+<p>וודאי שהשרת רץ, פתחי את <a href='http://localhost:3000/users/sign_up'>http://localhost:3000/users/sign_up</a> וצרי את חשבון המשתמש שלך.</p>
+
+<h2 id='_5____'>שלב 5: הוסיפי קישורים להרשמה ולהתחברות</h2>
+
+<p>כל שעלינו לעשות כעת זה להוסיף את הקישורים המתאים להתחברות - או הודעה שמהשתמש מחובר - בצד הימני העליון של סרגל הניווט.</p>
+
+<p>כדי לעשות זאת, ערכי את <code>app/views/layouts/application.html.erb</code> והוסיפי:</p>
+<div class='highlight'><pre><code class='erb'><span class='x'>&lt;p class=&quot;navbar-text pull-right&quot;&gt;</span>
+<span class='cp'>&lt;%</span> <span class='k'>if</span> <span class='n'>user_signed_in?</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>  Logged in as &lt;strong&gt;</span><span class='cp'>&lt;%=</span> <span class='n'>current_user</span><span class='o'>.</span><span class='n'>email</span> <span class='cp'>%&gt;</span><span class='x'>&lt;/strong&gt;.</span>
+<span class='x'>  </span><span class='cp'>&lt;%=</span> <span class='n'>link_to</span> <span class='s1'>&#39;Edit profile&#39;</span><span class='p'>,</span> <span class='n'>edit_user_registration_path</span><span class='p'>,</span> <span class='ss'>:class</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;navbar-link&#39;</span> <span class='cp'>%&gt;</span><span class='x'> |</span>
+<span class='x'>  </span><span class='cp'>&lt;%=</span> <span class='n'>link_to</span> <span class='s2'>&quot;Logout&quot;</span><span class='p'>,</span> <span class='n'>destroy_user_session_path</span><span class='p'>,</span> <span class='nb'>method</span><span class='p'>:</span> <span class='ss'>:delete</span><span class='p'>,</span> <span class='ss'>:class</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;navbar-link&#39;</span>  <span class='cp'>%&gt;</span><span class='x' />
+<span class='cp'>&lt;%</span> <span class='k'>else</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>  </span><span class='cp'>&lt;%=</span> <span class='n'>link_to</span> <span class='s2'>&quot;Sign up&quot;</span><span class='p'>,</span> <span class='n'>new_user_registration_path</span><span class='p'>,</span> <span class='ss'>:class</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;navbar-link&#39;</span>  <span class='cp'>%&gt;</span><span class='x'> |</span>
+<span class='x'>  </span><span class='cp'>&lt;%=</span> <span class='n'>link_to</span> <span class='s2'>&quot;Login&quot;</span><span class='p'>,</span> <span class='n'>new_user_session_path</span><span class='p'>,</span> <span class='ss'>:class</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;navbar-link&#39;</span>  <span class='cp'>%&gt;</span><span class='x' />
+<span class='cp'>&lt;%</span> <span class='k'>end</span> <span class='cp'>%&gt;</span><span class='x' />
+</code></pre></div>
+<p>מייד לאחר</p>
+<div class='highlight'><pre><code class='erb'><span class='x'>&lt;ul class=&quot;nav&quot;&gt;</span>
+<span class='x'>  &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;/ideas&quot;&gt;Ideas&lt;/a&gt;&lt;/li&gt;</span>
+<span class='x'>&lt;/ul&gt;</span>
+</code></pre></div>
+<p>פתחי את הדפדפן שלך ונסי להתחבר לאפליקציה ולהתנתק ממנה.</p>
+
+<p><strong>מדריך/ה:</strong> דבר/י על ההלפרים <code>user_signed_in?</code> ו- <code>current_user</code>. כיצד הם שימושיים?</p>
+
+<h2 id='_'>מה הלאה?</h2>
+
+<p>* הוסיפי שדות למודל המשתמש</p>
+
+<p>* הוסיפי סוגי קשרים בין משתמשים ורעיונות</p>
+
+<p>* הגבילי משתמשים כך שיוכלו לערוך רק את הרעיונות שלהם</p>
+
+<ul>
+<li>הוסיפי תפקידים והרשאות (השתמשי באחד מה- gems הפופולריים לניהול הרשאות, כגון CanCan)</li>
+</ul>
+      </div>
+    </article>
+    <footer>
+      <p>
+        החומר באתר זה נמצא תחת רישיון
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>
+      </p>
+      <p>
+        <a href="http://railsgirls.com">Rails Girls</a>
+        &middot; מוגש בהתרגשות מהלסינקי, פינלנד &middot; עקבו אחרינו ב-<a href="http://twitter.com/railsgirls">Twitter</a>
+        ו-<a href="https://www.facebook.com/railsgirls">Facebook</a>
+      </p>
+    </footer>
+    <script type="text/javascript">
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-19631067-3"]);
+        _gaq.push(["_trackPageview"]);
+
+        (function() {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

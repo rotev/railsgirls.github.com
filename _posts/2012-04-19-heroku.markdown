@@ -16,6 +16,21 @@ __מדריך/ה__: דבר/י על היתרונות בהעלאה ל-Heroku לעו
 
 ### הכיני את האפליקציה שלך
 
+#### מערכת לשמירת גרסאות
+
+אנחנו צריכים להכניס את הקוד שלך למערכת לשמירת גרסאות. את יכולה לעשות זאת ע״י הרצה של הפקודות הבאות בטרמינל:
+
+{% highlight sh %}
+git init
+echo "public/uploads" >> .gitignore
+echo "tmp" >> .gitignore
+echo "logs" >> .gitignore
+git add .
+git commit -m "initial commit"
+{% endhighlight %}
+
+__מדריך__: זה יכול להיות זמן טוב לדבר על מערכות שמירת גרסאת ועל git. כמו כן הסבר מה זה`.gitignore` ולמה אנחנו לא צריכים להכניס את הקבצים האלה. 
+
 #### עדכון בסיסי הנתונים שלנו
 
 ראשית, עלינו לגרום לבסיס הנתונים לעבוד על Heroku, שמשתמש בבסיס נתונים שונה. שני בבקשה את השורה הבאה ב-Gemfile:
@@ -42,6 +57,7 @@ __מדריך/ה__: תוכל/י לדבר על RDBMS ועל אלו שקיימים 
 #### הוספת rails\_12factor
 
 כעת, עלינו להוסיף את rails\_12factor ל- Gemfile שלנו כדי להפוך את האפליקציה שלנו לזמינה ב- Heroku.
+
 אנא שני את החלק הבא ב- Gemfile:
 
 {% highlight ruby %}
@@ -59,20 +75,14 @@ group :production do
 end
 {% endhighlight %}
 
-__מדריך/ה__: תוכל/י לדבר על logging ב- Heroku.
 
-#### כלי ניהול גרסאות
-
-עלינו להוסיף את הקוד שלנו לכלי ניהול גרסאות. תוכלי לעשות זאת על ידי הרצת הפקודות הבאות בטרמינל:
+אחרי זה תוכלי להריץ `bundle` ולעשות commit לשינויים ב Gemfile.lock:
 
 {% highlight sh %}
-git init
-git add .
-git commit -m "initial commit"
+git commit -a -m "Added rails_12factor gem and updated Gemfile.lock"
 {% endhighlight %}
 
-__מדריך/ה__: זהו זמן טוב לדבר על כלים לניהול גרסאות ועל git.
-
+__מדריך/ה__: תוכל/י לדבר על logging ב- Heroku.
 
 ### פרסי את האפליקציה שלך (Deployment)
 
@@ -81,8 +91,8 @@ __מדריך/ה__: זהו זמן טוב לדבר על כלים לניהול גר
 עלינו ליצור את אפליקציית heroku על ידי כך שנכתוב `heroku create` בטרמינל ונראה משהו בסגנון הזה:
 
 {% highlight sh %}
-Creating evening-sky-7498... done, stack is cedar
-http://evening-sky-7498.herokuapp.com/ | git@heroku.com:evening-sky-7498.git
+Creating sheltered-refuge-6377... done, stack is cedar
+http://sheltered-refuge-6377.herokuapp.com/ | git@heroku.com:sheltered-refuge-6377.git
 Git remote heroku added
 {% endhighlight %}
 
@@ -93,20 +103,22 @@ Git remote heroku added
 כעת עלינו לדחוף את הקוד שלנו ל- heroku על ידי כתיבת `git push heroku master`. את תראי את פלט פקודת ה- push באופן הבא:
 
 {% highlight sh %}
-Counting objects: 134, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (115/115), done.
-Writing objects: 100% (134/134), 35.29 KiB, done.
-Total 134 (delta 26), reused 0 (delta 0)
+Initializing repository, done.
+Counting objects: 101, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (91/91), done.
+Writing objects: 100% (101/101), 22.68 KiB | 0 bytes/s, done.
+Total 101 (delta 6), reused 0 (delta 0)
 
------> Heroku receiving push
------> Ruby/Rails app detected
------> Installing dependencies using Bundler version 1.1.2
-       Running: bundle install --without development:test --path vendor/bundle --binstubs bin/ --deployment
-       Fetching gem metadata from https://rubygems.org/.......
+-----> Ruby app detected
+-----> Compiling Ruby/Rails
+-----> Using Ruby version: ruby-2.0.0
+-----> Installing dependencies using 1.6.3
+       Running: bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment
+       Fetching gem metadata from https://rubygems.org/..........
 ...
------> Launching... done, v4
-       http://evening-sky-7498.herokuapp.com deployed to Heroku
+-----> Launching... done, v6
+       http://sheltered-refuge-6377.herokuapp.com/ deployed to Heroku
 {% endhighlight %}
 
 תדעי שדחיפת הקוד הסתיימה כאשר תראי את הטקסט "Launching..." כמו בדוגמה לעיל.
@@ -116,4 +128,34 @@ Total 134 (delta 26), reused 0 (delta 0)
 בשלב הבא עלינו להגר את בסיס הנתונים כפי שעשינו באופן מקומי במהלך הסדנה: `heroku run rake db:migrate`
 
 כאשר הפקודה הזו מסיימת לרוץ, תוכלי גשת אל האפליקציה המבוססת דרך ה- url. עבור האפליקציה שבדוגמה הזו, תוכלי לגשת אל [http://evening-sky-7498.herokuapp.com](http://evening-sky-7498.herokuapp.com). תוכלי גם לכתוב `heroku open` בטרמינל כדי להגיע אל הדף.
+
+
+#### הערות סיום
+
+לפלטפורמת Heroku עדיין ישנם כמה התנהגויות מוזרות. אפליקציות שרצות על Heroku נמצאות למעשה בסביבה ארעית (Ephemeral). כלומר, כל הקבצים שנוצרים ע״י האפליקציה שלך (מלבד  מידע השמור במסד הנתונים) ימחק כאשר האפליקציה עושה restart (לדוגמא, כאשר מעלים גרסא חדשה של אפליקציה).
+
+###### מערכות ארעיות
+ניתן לקרוא את ההגדרה המדוייקת באתר של Heroku:  [מערכות קבצים ארעיות](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem)
+
+במדריך של [יצירת האפליקציה] (http://http://railsgirls.co.il/guides/app/introduction.html)  ישנה האפשרות להוסיף קובץ לרשומה, מה שבסוף יוצר את האפשרות להוסיף קבצים חדשים לאפליקציה שלך בתיקייה `public/uploads`. 
+את האחסנה הארעית ב Heroku ניתן לראות בשלבים הבאים:
+
+ 1. הריצי את האפליקציה עם `heroku open`
+ 2. הוסיפי רשומה חדשה עם תמונה
+ 3.  תעשי Restart לאפליקציה ע״י הרצה של  `heroku restart`
+4.  חזרי לעמוד הראשי של כל הרשומות ורענני את העמוד - כעת התמונה אמורה להעלם.
+
+
+##### להתגבר על האיחסון הארעי
+
+הפתרון המוצע אינו מתאים אם מדובר באפליקציות אמיתיות שרצות בעולם האמיתי, אבל ישנם כמה דרכים לעקוף את המגבלה הזאת אשר אתרים רבים משתמשים בה גם.
+
+הדרך הנפוצה ביותר היא להשתמש בשרת חיצוני אשר ישמור את הקבצים של האפליקציה שלך , שרת כמו Amazon S3 (Simple Storage Service), או Rackspace CloudFiles. נותני השירותים האלה (בדרך כלל העלות נמוכה מאוד  - פחות מ 0.10$ עבור  1GB) מאחסנים את הקבצים בענן (כלומר הם יכולים להיות בכל מקום ) והאפליקציה שלך יכולה להשתמש בהם כמו איחסון קבצים רגיל בתיקייה באפליקציה.
+
+אמנם הפונקציונאליות הזאת היא קצת מחוץ לסקופ של המדריך הזה, הנה כמה לינקים שתוכלי להעזר בהם בשביל למצוא את הדרך:
+
+* [איך לגרום להעלות קבצים לעבוד ב Heroku](https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Make-Carrierwave-work-on-Heroku)
+* [Amazon S3 - מדריך למתחילים](http://www.hongkiat.com/blog/amazon-s3-the-beginners-guide/)
+
+כמו תמיד, אם יש לך עוד שאלות או מידע נוסף שתרצי לדעת - את יכולה להעזר במדריך שלך.
 
