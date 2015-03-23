@@ -59,7 +59,7 @@ belongs_to :idea
 <% @comments.each do |comment| %>
   <div>
     <strong><%= comment.user_name %></strong>
-    <br />
+    <br>
     <p><%= comment.body %></p>
     <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
   </div>
