@@ -132,27 +132,30 @@ Total 101 (delta 6), reused 0 (delta 0)
 
 #### הערות סיום
 
-Heroku's platform is not without its quirks. Applications run on Heroku live within an ephermeral environment — this means that (except for information stored in your database) any files created by your application will disappear if it restarts (for example, when you push a new version).
+לפלטפורמת Heroku עדיין ישנם כמה התנהגויות מוזרות. אפליקציות שרצות על Heroku נמצאות למעשה בסביבה ארעית (Ephemeral). כלומר, כל הקבצים שנוצרים ע״י האפליקציה שלך (מלבד  מידע השמור במסד הנתונים) ימחק כאשר האפליקציה עושה restart (לדוגמא, כאשר מעלים גרסא חדשה של אפליקציה).
 
-###### [Ephemeral filesystem](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem)
-> Each dyno gets its own ephemeral filesystem, with a fresh copy of the most recently deployed code. During the dyno’s lifetime its running processes can use the filesystem as a temporary scratchpad, but no files that are written are visible to processes in any other dyno and any files written will be discarded the moment the dyno is stopped or restarted.
+###### מערכות ארעיות
+ניתן לקרוא את ההגדרה המדוייקת באתר של Heroku:  [מערכות קבצים ארעיות](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem)
 
-In the [App](/app) tutorial the ability to attach a file to the Idea record is added, which results in new files being written to your applications `public/uploads` folder. The ephemeral storage in Heroku can be seen with the following steps:
+במדריך של [יצירת האפליקציה] (http://http://railsgirls.co.il/guides/app/introduction.html)  ישנה האפשרות להוסיף קובץ לרשומה, מה שבסוף יוצר את האפשרות להוסיף קבצים חדשים לאפליקציה שלך בתיקייה `public/uploads`. 
+את האחסנה הארעית ב Heroku ניתן לראות בשלבים הבאים:
 
-1. Launch the app with `heroku open`
-2. Add a new Idea with an image
-3. Restart the application by running `heroku restart`
-4. Go back to your Idea and reload the page - the image should no longer be visible
+ 1. הריצי את האפליקציה עם `heroku open`
+ 2. הוסיפי רשומה חדשה עם תמונה
+ 3.  תעשי Restart לאפליקציה ע״י הרצה של  `heroku restart`
+4.  חזרי לעמוד הראשי של כל הרשומות ורענני את העמוד - כעת התמונה אמורה להעלם.
 
-##### Working around Ephemeral Storage
 
-Obviously this doesn't seem to be useful if you were running a real life application, but there are ways to work around this which is commonly used by a lot of popular websites.
+##### להתגבר על האיחסון הארעי
 
-The most common method is to use an external asset host such as Amazon S3 (Simple Storage Service) or Rackspace CloudFiles. These services provide (for a low cost - usually less then $0.10 per GB) storage 'in the cloud' (meaning the files could potentially be hosted anywhere) which your application can use as persistent storage.
+הפתרון המוצע אינו מתאים אם מדובר באפליקציות אמיתיות שרצות בעולם האמיתי, אבל ישנם כמה דרכים לעקוף את המגבלה הזאת אשר אתרים רבים משתמשים בה גם.
 
-While this functionality is a bit out of scope for this tutorial there are some resources available which you can use to find your way:
+הדרך הנפוצה ביותר היא להשתמש בשרת חיצוני אשר ישמור את הקבצים של האפליקציה שלך , שרת כמו Amazon S3 (Simple Storage Service), או Rackspace CloudFiles. נותני השירותים האלה (בדרך כלל העלות נמוכה מאוד  - פחות מ 0.10$ עבור  1GB) מאחסנים את הקבצים בענן (כלומר הם יכולים להיות בכל מקום ) והאפליקציה שלך יכולה להשתמש בהם כמו איחסון קבצים רגיל בתיקייה באפליקציה.
 
-* [How to: Make Carrierwave work on Heroku](https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Make-Carrierwave-work-on-Heroku)
-* [Amazon S3 - The Beginner' Guide](http://www.hongkiat.com/blog/amazon-s3-the-beginners-guide/)
+אמנם הפונקציונאליות הזאת היא קצת מחוץ לסקופ של המדריך הזה, הנה כמה לינקים שתוכלי להעזר בהם בשביל למצוא את הדרך:
 
-As always if you require any more information or assistance your coaches will be able to assist.
+* [איך לגרום להעלות קבצים לעבוד ב Heroku](https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Make-Carrierwave-work-on-Heroku)
+* [Amazon S3 - מדריך למתחילים](http://www.hongkiat.com/blog/amazon-s3-the-beginners-guide/)
+
+כמו תמיד, אם יש לך עוד שאלות או מידע נוסף שתרצי לדעת - את יכולה להעזר במדריך שלך.
+
