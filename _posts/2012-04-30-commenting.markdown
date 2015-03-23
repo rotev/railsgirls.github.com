@@ -47,7 +47,8 @@ belongs_to :idea
 
 ## *3.* הדפיסי למסך את טופס הוספת התגובה ואת רשימת התגובות הקיימות
 
-Open app/views/ideas/show.html.erb and after the image_tag
+
+ פתחי את `app/views/ideas/show.html.erb` ואחרי image_tag
 {% highlight erb %}
 <%= image_tag(@idea.picture_url, :width => 600) if @idea.picture.present? %>
 {% endhighlight %}
@@ -66,7 +67,7 @@ Open app/views/ideas/show.html.erb and after the image_tag
 <%= render 'comments/form' %>
 {% endhighlight %}
 
-In `app/controllers/ideas_controller.rb` add to show action after the row
+ב`app/controllers/ideas_controller.rb` הוסיפי לאחר השורה 
 {% highlight ruby %}
 @idea = Idea.find(params[:id])
 {% endhighlight %}
@@ -77,7 +78,7 @@ In `app/controllers/ideas_controller.rb` add to show action after the row
 @comment = @idea.comments.build
 {% endhighlight %}
 
-Open `app/views/comments/_form.html.erb` and after
+פתחי את `app/views/comments/_form.html.erb` ולאחר  
 {% highlight erb %}
   <div class="field">
     <%= f.label :body %><br />
@@ -90,7 +91,7 @@ Open `app/views/comments/_form.html.erb` and after
 <%= f.hidden_field :idea_id %>
 {% endhighlight %}
 
-next, remove
+לבסוף, הורידי את 
 {% highlight erb %}
 <div class="field">
   <%= f.label :idea_id %><br>
