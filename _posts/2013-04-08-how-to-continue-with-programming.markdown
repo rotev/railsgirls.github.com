@@ -48,6 +48,7 @@ Girls, שביצענו בארוע. לנסות ולשחק איתו עוד קצת.
 ### ועוד
 
 * [Thoughtbot Trail-Map](https://github.com/thoughtbot/trail-map) - מדריכים בנושאים שונים.
+* [Ruby on Rails Tutorial: Learn From Scratch](https://blog.udemy.com/ruby-on-rails-tutorial-learn-from-scratch/) - קורס המסביר נושאים שונים לחלקים הרבים של Rails
 
 > במידה ומצאת עוד אתר שווה לרשימה, את [מוזמנת לכתוב לי](mailto:daniel@codegestalt.com) ואוסיף אותו.
 

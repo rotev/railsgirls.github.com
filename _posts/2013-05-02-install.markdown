@@ -61,7 +61,7 @@ source ~/.bash_profile
 את יכולה למצוא מה הגרסא הכי חדשה של Ruby עם הפקודה “rbenv install -l”.
 
 {% highlight sh %}
-rbenv install 2.2.0
+rbenv install 2.2.3
 {% endhighlight %}
 
 אם קיבלת שגיאת "OpenSSL::SSL::SSLError: ... : certificate verify failed”, נסי בדרך הבאה:
@@ -74,7 +74,7 @@ cp /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt `ruby -ropenssl -e 'puts Op
 #### *3א5.* הגדירי את ברירת המחדל של Ruby:
 
 {% highlight sh %}
-rbenv global 2.2.0
+rbenv global 2.2.3
 {% endhighlight %}
 
 #### *3א6.* התקיני Rails:
@@ -259,6 +259,23 @@ gem -v
 
 כעת צריכה להיות לך סביבת עבודה מוכנה לתכנות ב- Ruby on Rails. ברכותינו!
 
+### *4.* התקיני Node
+
+ExecJS::RuntimeError כדאי להתקין את Node כיוון שזה מונע בעיות עתידיות של
+אשר קורות לעיתים (ניתן לקרוא על כך יותר כאן -
+[see stackoverflow](https://stackoverflow.com/questions/12520456/execjsruntimeerror-on-windows-trying-to-follow-rubytutorial)).
+
+* לכי ל [https://nodejs.org/](https://nodejs.org/)
+והתקיני node.
+
+בדקי את הגרסא של Node
+
+{% highlight sh %}
+node --version
+{% endhighlight %}
+
+וודאי כי הגרסא היא מעל `0.12`.
+
 #### את מוזמנת לקרוא לאחד המדריכים לוודא שהכל הותקן אצלך באופן תקין במחשב :)
 <hr />
 
@@ -328,3 +345,45 @@ rd -r railsgirls
 #### את מוזמנת לקרוא לאחד המדריכים לוודא שהכל הותקן אצלך באופן תקין במחשב :)
 <hr />
 
+## Using a Cloud Service
+
+Instead of installing Ruby on Rails and an editor on your computer, you can use a webservice for development. All you need is a browser and an internet connection. This guide explains how to get started with [nitrous.io](https://nitrous.io). If you're using a different service, they may use a different wording - e.g. 'workspace' instead of 'box', but the process is usually pretty similar.
+
+**Organizer:** Nitrous is a paid service, but free for community usage purpose. Please contact Nitrous <pro@nitrous.io> to request a community account with the following list/information.
+
+- Email address of the people you need workspaces for (= email list of members)
+- How long they would need to use Nitrous
+- Starting from date/time
+- How long (days, weeks etc.) you need access
+
+### *1.* Update your browser
+
+If you use Internet Explorer, we recommend installing [Firefox](mozilla.org/firefox) or [Google Chrome](google.com/chrome).
+
+Open [whatbrowser.org](http://whatbrowser.org) and update your browser if you don't have the latest version.
+
+### *2.* Create an account
+
+Go to [https://nitrous.io](https://nitrous.io/) and signup.
+
+### *3.* Setup a development box / workspace for ruby on rails
+* Login to your nitrous account
+* Go to the dashboard by using the green 'Open dashboard' button
+* Create a nitrous box: pick Ruby/Rails from the templates - everything else can stay as is, but you can change the name of your box if you want to
+* It takes a moment until your box is ready
+
+### *4.* Find and restart your development box
+* If you've just created your box, you can probably skip these steps - they're good to know if you login to nitrous again later
+* You can always find your nitrous boxes by going to the dashboard or choosing 'Boxes' from the top menu
+* Pick your box from the list of boxes
+* If you haven't used a box in a while, it might have been shutdown due to inactivity. If you are informed that your box is not running, restart it using the respective button
+* When your box is up and running, choose 'IDE' in order to start coding
+
+### *5.* Coding with your development box
+* On the left hand side, you find a file browser where you can navigate your directories and file
+* In the middle, you find the editor where you can modify your files
+* At the bottom, you find the terminal where you can run commands
+* Everything you need is here in you browser window - you do not need to start an editor or terminal anywhere else
+* If your following a guide or tutorial, use the commands for Linux even if you are on a Windows computer - your operating system does not matter, since all commands are run on your development box, which is a Linux machine
+* If a guide or tutorial asks you to point your browser to something like http://localhost:3000, go to the 'Preview' menu and pick 'Port 3000'
+* If, for example, you're asked to open http://localhost:3000/posts, please append '/posts' manually to the URL that has been opened
