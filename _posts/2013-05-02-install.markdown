@@ -148,10 +148,26 @@ rm -r railsgirls
 
 ### *1.* התקיני Rails
 
-תורידי [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.1.0.exe) ותריצי אותו.
+#### 1.1 אפשרי העתק-הדבק
+
+פתחי את `Command Prompt with Ruby on Rails` 
+<br/>
+<br/>
+אם יש לך windows 10:
+<br/>
+לחצי עם לחצן ימני על שורת הכותרת של החלון, ובחרי ב-properties. בחלון שנפתח, בחרי בלשונית experimental. לאחר מכן סמני את "Enable new Ctrl key shortcuts" (יתכן שתצטרכי לסמן קודם את "Enable experimental console features").
+<br/>
+<br/>
+אם יש לך גירסת windows אחרת:
+<br/>
+כדי להדביק טקסט בחלון הטרמינל, תצטרכי להשתמש בעכבר (לחצן ימני על החלון --> paste)
+
+#### 1.2 התקיני ריילס
+
+הורידי [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.1.0.exe) ותריצי אותו.
 תעברי את ההתקנה דרך הגדרות ברירת המחדל.
 
-פתחי את `Command Prompt with Ruby on Rails` ותריצי את הפקודה הבאה:
+ב-`Command Prompt with Ruby on Rails` הריצי את הפקודה הבאה:
 
 {% highlight sh %}
 rails -v
@@ -213,7 +229,7 @@ gem -v
 אם הגרסא היא פחות מ`2.2.3` את תצטרכי לעדכן אותה ידנית:  
 
 
-קודם כל תורידי את[ruby-gems-update gem](https://github.com/rubygems/rubygems/releases/download/v2.2.3/rubygems-update-2.2.3.gem). תעבירי את הקובץ ל`c:\\rubygems-update-2.2.3.gem` ותריצי:  
+קודם כל הורידי את[ruby-gems-update gem](https://github.com/rubygems/rubygems/releases/download/v2.2.3/rubygems-update-2.2.3.gem). תעבירי את הקובץ ל`c:\\rubygems-update-2.2.3.gem` והריצי:  
 
 {% highlight sh %}
 gem install --local c:\\rubygems-update-2.2.3.gem
@@ -227,7 +243,7 @@ gem uninstall rubygems-update -x
 gem -v
 {% endhighlight %}
 
-וודאי כי כעת הגרסא היא מעל`2.2.3`. הריצי את הפקודות הקודמות שוב אם הם נכשלו. 
+וודאי כי כעת הגרסא היא מעל `2.2.3`. הריצי את הפקודות הקודמות שוב אם הם נכשלו. 
 
 
 ###  שגיאת 'x64_mingw' is not a valid platform`
@@ -240,7 +256,7 @@ gem -v
 
 `gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]`
 
-אם יש לך את השורה הזאת יחד עם`:x64_mingw` , אז מחקי את   `:x64_mingw`. בסוף זה אמור להיראות כך:
+אם יש לך את השורה הזאת יחד עם `:x64_mingw` , אז מחקי את `:x64_mingw`. בסוף זה אמור להיראות כך:
 
 `'tzinfo-data', platforms: [:mingw, :mswin]`
 
