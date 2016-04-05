@@ -148,8 +148,8 @@ rm -r railsgirls
 
 ### *1.* התקיני Rails
 
-הורידי [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.1.0.exe) ותריצי אותו.
-תעברי את ההתקנה דרך הגדרות ברירת המחדל.
+הורידי [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.1.0.exe) והריצי אותו.
+עברי את ההתקנה עם הגדרות ברירת המחדל.
 
 #### 1.1 אפשרי העתק-הדבק
 
