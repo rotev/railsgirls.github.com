@@ -148,6 +148,9 @@ rm -r railsgirls
 
 ### *1.* התקיני Rails
 
+הורידי [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.1.0.exe) ותריצי אותו.
+תעברי את ההתקנה דרך הגדרות ברירת המחדל.
+
 #### 1.1 אפשרי העתק-הדבק
 
 פתחי את `Command Prompt with Ruby on Rails` 
@@ -163,9 +166,6 @@ rm -r railsgirls
 כדי להדביק טקסט בחלון הטרמינל, תצטרכי להשתמש בעכבר (לחצן ימני על החלון --> paste)
 
 #### 1.2 התקיני ריילס
-
-הורידי [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.1.0.exe) ותריצי אותו.
-תעברי את ההתקנה דרך הגדרות ברירת המחדל.
 
 ב-`Command Prompt with Ruby on Rails` הריצי את הפקודה הבאה:
 
