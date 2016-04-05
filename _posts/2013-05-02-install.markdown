@@ -132,9 +132,10 @@ rm -r railsgirls
 
 ### *4.* התקיני עורך טקסט לעריכת קבצי האפליקציה
 
-אנחנו ממליצות להוריד את Sublime
+אנחנו ממליצים להוריד עורך טקסט בשם Atom לצורך הסדנא.
 
-[Sublime Text 2](http://www.sublimetext.com/2).
+* [הורידי Atom והתקיני אותו.](https://atom.io/)
+
 
 ### *5.* עדכני את הדפדפן
 
@@ -249,9 +250,14 @@ gem -v
 
 ### *2.* התקיני עורך טקסט לעריכת קבצי האפליקציה
 
-אנחנו ממליצות להוריד את Sublime
+אנחנו ממליצים להוריד עורך טקסט בשם Atom לצורך הסדנא.
 
-[Sublime Text 2](http://www.sublimetext.com/2)
+* [הורידי Atom והתקיני אותו:](https://github.com/atom/atom/releases/latest)
+  * הורידי את הקובץ zip ל- windows ופתחי אותו.
+  * העתיקי את התיקייה לתוך Program Files ופתחי את Atom משם.
+
+אם את משתמשת ב Windows Vista או בגרסאות ישנות יותר, את יכולה להוריד את העורך של
+[Sublime Text 2](http://www.sublimetext.com/2).
 
 ### *3.*עדכני את הדפדפן
 
