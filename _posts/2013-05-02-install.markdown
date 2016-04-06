@@ -151,7 +151,7 @@ rm -r railsgirls
 הורידי [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.1.0.exe) והריצי אותו.
 עברי את ההתקנה עם הגדרות ברירת המחדל.
 
-#### 1.1 אפשרי העתק-הדבק
+#### 1.1 אפשרי העתק-הדבק בטרמינל
 
 פתחי את `Command Prompt with Ruby on Rails` 
 <br/>
