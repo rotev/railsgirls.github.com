@@ -277,14 +277,14 @@ gem -v
 
 ### *4.* התקיני Node
 
-ExecJS::RuntimeError כדאי להתקין את Node כיוון שזה מונע בעיות עתידיות של
-אשר קורות לעיתים (ניתן לקרוא על כך יותר כאן -
-[see stackoverflow](https://stackoverflow.com/questions/12520456/execjsruntimeerror-on-windows-trying-to-follow-rubytutorial)).
+כדאי להתקין Node כיוון שזה מונע בעיות עתידיות של
+אשר קורות לעיתים
+[ניתן לקרוא על כך יותר כאן](https://stackoverflow.com/questions/12520456/execjsruntimeerror-on-windows-trying-to-follow-rubytutorial).
 
-* לכי ל [https://nodejs.org/](https://nodejs.org/)
-והתקיני node.
+לכי ל [https://nodejs.org/](https://nodejs.org/)
+והתקיני Node.
 
-בדקי את הגרסא של Node
+בדקי את הגרסא של Node:
 
 {% highlight sh %}
 node --version
