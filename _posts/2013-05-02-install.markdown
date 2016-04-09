@@ -132,9 +132,10 @@ rm -r railsgirls
 
 ### *4.* התקיני עורך טקסט לעריכת קבצי האפליקציה
 
-אנחנו ממליצות להוריד את Sublime
+אנחנו ממליצים להוריד עורך טקסט בשם Atom לצורך הסדנא.
 
-[Sublime Text 2](http://www.sublimetext.com/2).
+* [הורידי Atom והתקיני אותו.](https://atom.io/)
+
 
 ### *5.* עדכני את הדפדפן
 
@@ -265,9 +266,14 @@ gem -v
 
 ### *2.* התקיני עורך טקסט לעריכת קבצי האפליקציה
 
-אנחנו ממליצות להוריד את Sublime
+אם את משתמשת ב Windows Vista או בגרסאות ישנות יותר, הורידי את העורך של
+[Sublime Text 2](http://www.sublimetext.com/2).
 
-[Sublime Text 2](http://www.sublimetext.com/2)
+אם יש לך גרסת windows מתקדמת (7 ויותר) אנחנו ממליצים להוריד עורך טקסט בשם Atom לצורך הסדנא.
+
+* [הורידי Atom והתקיני אותו:](https://github.com/atom/atom/releases/latest)
+  * הורידי את הקובץ atom-windows.zip ופתחי אותו.
+  * העתיקי את התיקייה לתוך Program Files ופתחי את Atom משם.
 
 ### *3.*עדכני את הדפדפן
 
@@ -347,6 +353,38 @@ rd -r railsgirls
 
 ### *2.* התקיני עורך טקסט לעריכת קבצי האפליקציה
 
+####  עבור Ubuntu:
+
+ניתן להוריד Atom רק אם יש לך גרסת 64 ביט.
+
+ [הורידי Atom והתקיני אותו:](https://github.com/atom/atom/releases/latest)
+
+* הורידי את הקובץ atom-amd64.deb ופתחי אותו.
+* על התיקייה שהורדת הריצי:
+{% highlight sh %}
+sudo dpkg --install atom-amd64.deb
+{% endhighlight %}
+* הריצי Atom דרך הטרמינל.
+
+
+####  עבור Fedora (גרסא 21 או מתחת), CentOS או Red Hat:
+
+
+ניתן להוריד Atom רק אם יש לך גרסת 64 ביט.
+
+ [הורידי Atom והתקיני אותו:](https://github.com/atom/atom/releases/latest)
+
+* הורידי את הקובץ atom.x86_64.rpm
+ ופתחי אותו.
+* על התיקייה שהורדת הריצי:
+{% highlight sh %}
+sudo yum localinstall atom.x86_64.rpm
+{% endhighlight %}
+* הריצי Atom דרך הטרמינל.
+
+
+####  עבור שאר מערכות ההפעלה של Linux:
+
 אנחנו ממליצות להוריד את Sublime
 
 [Sublime Text 2](http://www.sublimetext.com/2).
@@ -362,13 +400,6 @@ rd -r railsgirls
 ## Using a Cloud Service
 
 Instead of installing Ruby on Rails and an editor on your computer, you can use a webservice for development. All you need is a browser and an internet connection. This guide explains how to get started with [nitrous.io](https://nitrous.io). If you're using a different service, they may use a different wording - e.g. 'workspace' instead of 'box', but the process is usually pretty similar.
-
-**Organizer:** Nitrous is a paid service, but free for community usage purpose. Please contact Nitrous <pro@nitrous.io> to request a community account with the following list/information.
-
-- Email address of the people you need workspaces for (= email list of members)
-- How long they would need to use Nitrous
-- Starting from date/time
-- How long (days, weeks etc.) you need access
 
 ### *1.* Update your browser
 
