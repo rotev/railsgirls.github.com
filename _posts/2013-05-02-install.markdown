@@ -337,6 +337,38 @@ rd -r railsgirls
 
 ### *2.* התקיני עורך טקסט לעריכת קבצי האפליקציה
 
+####  עבור Ubuntu:
+
+ניתן להוריד Atom רק אם יש לך גרסת 64 ביט.
+
+ [הורידי Atom והתקיני אותו:](https://github.com/atom/atom/releases/latest)
+
+* הורידי את הקובץ atom-amd64.deb ופתחי אותו.
+* על התיקייה שהורדת הריצי:
+{% highlight sh %}
+sudo dpkg --install atom-amd64.deb
+{% endhighlight %}
+* הריצי Atom דרך הטרמינל.
+
+
+####  עבור Fedora (גרסא 21 או מתחת), CentOS או Red Hat:
+
+
+ניתן להוריד Atom רק אם יש לך גרסת 64 ביט.
+
+ [הורידי Atom והתקיני אותו:](https://github.com/atom/atom/releases/latest)
+
+* הורידי את הקובץ atom.x86_64.rpm
+ ופתחי אותו.
+* על התיקייה שהורדת הריצי:
+{% highlight sh %}
+sudo yum localinstall atom.x86_64.rpm
+{% endhighlight %}
+* הריצי Atom דרך הטרמינל.
+
+
+####  עבור שאר מערכות ההפעלה של Linux:
+
 אנחנו ממליצות להוריד את Sublime
 
 [Sublime Text 2](http://www.sublimetext.com/2).
