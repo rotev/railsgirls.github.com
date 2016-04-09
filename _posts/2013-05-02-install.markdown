@@ -250,14 +250,14 @@ gem -v
 
 ### *2.* התקיני עורך טקסט לעריכת קבצי האפליקציה
 
-אנחנו ממליצים להוריד עורך טקסט בשם Atom לצורך הסדנא.
+אם את משתמשת ב Windows Vista או בגרסאות ישנות יותר, הורידי את העורך של
+[Sublime Text 2](http://www.sublimetext.com/2).
+
+אם יש לך גרסת windows מתקדמת (7 ויותר) אנחנו ממליצים להוריד עורך טקסט בשם Atom לצורך הסדנא.
 
 * [הורידי Atom והתקיני אותו:](https://github.com/atom/atom/releases/latest)
-  * הורידי את הקובץ zip ל- windows ופתחי אותו.
+  * הורידי את הקובץ atom-windows.zip ופתחי אותו.
   * העתיקי את התיקייה לתוך Program Files ופתחי את Atom משם.
-
-אם את משתמשת ב Windows Vista או בגרסאות ישנות יותר, את יכולה להוריד את העורך של
-[Sublime Text 2](http://www.sublimetext.com/2).
 
 ### *3.*עדכני את הדפדפן
 
